@@ -1,0 +1,163 @@
+---
+// Hero.astro
+---
+
+<section id="/#inicio" class="relative min-h-screen flex items-center">
+  <!-- Background Image -->
+  <div class="absolute inset-0">
+    <img
+      src="/assets/project-modern-house.png"
+      alt="Arquitectura moderna LARQ"
+      class="w-full h-full object-cover"
+    />
+    <div class="hero-overlay absolute inset-0" />
+  </div>
+
+  <!-- Content -->
+  <div class="container-corporate relative z-10 pt-20">
+    <div class="max-w-3xl">
+      <div class="hero-element opacity-0" data-delay="0">
+        <span class="inline-block text-cta font-medium tracking-widest text-sm uppercase mb-6">
+          Estudio de Arquitectura
+        </span>
+      </div>
+
+      <h1
+        class="hero-element opacity-0 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-semibold text-corporate-dark-foreground leading-tight mb-6"
+        data-delay="200"
+      >
+        Diseñamos espacios que{" "}
+        <span class="text-cta">transforman</span> la forma de vivir
+      </h1>
+
+      <p
+        class="hero-element opacity-0 text-lg md:text-xl text-corporate-dark-foreground/80 mb-10 max-w-2xl leading-relaxed"
+        data-delay="400"
+      >
+        Más de 15 años creando arquitectura contemporánea que integra funcionalidad, 
+        estética y armonía con el entorno natural. Soluciones integrales para 
+        proyectos residenciales, comerciales e institucionales.
+      </p>
+
+      <div
+        class="hero-element opacity-0 flex flex-col sm:flex-row gap-4"
+        data-delay="600"
+      >
+        <a href="#proyectos" class="btn-cta rounded-sm text-center">
+          Ver Proyectos
+        </a>
+        <a
+          href="#nosotros"
+          class="border-2 border-corporate-dark-foreground/30 text-corporate-dark-foreground px-8 py-3 font-medium tracking-wide transition-all duration-300 hover:bg-corporate-dark-foreground hover:text-corporate-dark rounded-sm text-center"
+        >
+          Conocer la Firma
+        </a>
+      </div>
+    </div>
+
+    <!-- Stats Bar -->
+    <div
+      class="hero-element opacity-0 mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl"
+      data-delay="800"
+    >
+      <div class="text-center md:text-left">
+        <div class="text-3xl md:text-4xl font-display font-bold text-cta mb-1">
+          15+
+        </div>
+        <div class="text-sm text-corporate-dark-foreground/70">
+          Años de Experiencia
+        </div>
+      </div>
+      <div class="text-center md:text-left">
+        <div class="text-3xl md:text-4xl font-display font-bold text-cta mb-1">
+          200+
+        </div>
+        <div class="text-sm text-corporate-dark-foreground/70">
+          Proyectos Realizados
+        </div>
+      </div>
+      <div class="text-center md:text-left">
+        <div class="text-3xl md:text-4xl font-display font-bold text-cta mb-1">
+          50+
+        </div>
+        <div class="text-sm text-corporate-dark-foreground/70">
+          Clientes Corporativos
+        </div>
+      </div>
+      <div class="text-center md:text-left">
+        <div class="text-3xl md:text-4xl font-display font-bold text-cta mb-1">
+          8
+        </div>
+        <div class="text-sm text-corporate-dark-foreground/70">
+          Reconocimientos
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Indicator -->
+  <a
+    href="#nosotros"
+    id="scroll-indicator"
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 text-corporate-dark-foreground/60 hover:text-cta transition-colors cursor-pointer opacity-0"
+  >
+    <div class="animate-bounce-slow">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </a>
+</section>
+
+<style>
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-element.animate {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 1.5s ease-in-out infinite;
+  }
+</style>
+
+<script>
+  // Animate hero elements on load
+  document.addEventListener('DOMContentLoaded', () => {
+    const heroElements = document.querySelectorAll('.hero-element');
+    
+    heroElements.forEach((element) => {
+      const delay = element.getAttribute('data-delay') || '0';
+      setTimeout(() => {
+        element.classList.add('animate');
+      }, parseInt(delay));
+    });
+
+    // Animate scroll indicator
+    const scrollIndicator = document.getElementById('scroll-indicator');
+    setTimeout(() => {
+      if (scrollIndicator) {
+        scrollIndicator.style.opacity = '1';
+        scrollIndicator.style.transition = 'opacity 0.5s ease-out';
+      }
+    }, 1200);
+  });
+</script>

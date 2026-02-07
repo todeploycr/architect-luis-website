@@ -1,0 +1,188 @@
+---
+// AboutSection.astro
+const values = [
+  {
+    name: "Building2",
+    title: "Excelencia Arquitectónica",
+    description: "Compromiso con los más altos estándares de diseño y construcción.",
+  },
+  {
+    name: "Leaf",
+    title: "Diseño Sostenible",
+    description: "Integración armoniosa con el entorno natural y eficiencia energética.",
+  },
+  {
+    name: "Users",
+    title: "Enfoque Colaborativo",
+    description: "Trabajo conjunto con clientes para materializar su visión.",
+  },
+  {
+    name: "Award",
+    title: "Innovación Constante",
+    description: "Aplicación de tecnologías y metodologías de vanguardia.",
+  },
+];
+---
+
+<section id="/#nosotros" class="section-padding bg-background texture-overlay">
+  <div class="container-corporate">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Image -->
+      <div class="about-image relative">
+        <div class="relative overflow-hidden rounded-sm shadow-corporate-lg">
+          <img
+            src="/assets/project-interior.png"
+            alt="Interior moderno LARQ Arquitectura"
+            class="w-full h-125 object-cover"
+          />
+          <!-- Tropical accent overlay -->
+          <div class="absolute bottom-0 left-0 right-0 h-1 bg-linear-to-r from-primary via-tropical to-cta" />
+        </div>
+        <!-- Experience badge -->
+        <div class="absolute -bottom-8 -right-8 bg-primary text-primary-foreground p-6 rounded-sm shadow-corporate-lg hidden md:block">
+          <div class="text-4xl font-display font-bold">15+</div>
+          <div class="text-sm font-medium">Años de<br />Trayectoria</div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="about-content">
+        <span class="inline-block text-primary font-medium tracking-widest text-sm uppercase mb-4">
+          Sobre la Firma
+        </span>
+        <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-foreground leading-tight mb-6">
+          Arquitectura con propósito y visión contemporánea
+        </h2>
+        <p class="text-muted-foreground leading-relaxed mb-6">
+          LARQ Arquitectura es un estudio profesional dedicado al diseño y desarrollo de 
+          proyectos arquitectónicos que combinan funcionalidad, estética y sostenibilidad. 
+          Nuestra filosofía se centra en crear espacios que mejoren la calidad de vida 
+          de sus usuarios, respetando el entorno natural y cultural.
+        </p>
+        <p class="text-muted-foreground leading-relaxed mb-8">
+          Con un equipo multidisciplinario de arquitectos, diseñadores e ingenieros, 
+          ofrecemos soluciones integrales desde la conceptualización hasta la ejecución, 
+          garantizando resultados que superan las expectativas de nuestros clientes.
+        </p>
+
+        <!-- Values Grid -->
+        <div class="grid sm:grid-cols-2 gap-6">
+          {values.map((value, index) => (
+            <div class="value-item flex gap-4" data-delay={0.4 + index * 0.1}>
+              <div class="shrink-0 w-12 h-12 bg-accent rounded-sm flex items-center justify-center">
+                {value.name === "Building2" && (
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                  </svg>
+                )}
+                {value.name === "Leaf" && (
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                  </svg>
+                )}
+                {value.name === "Users" && (
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                  </svg>
+                )}
+                {value.name === "Award" && (
+                  <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                  </svg>
+                )}
+              </div>
+              <div>
+                <h4 class="font-semibold text-foreground mb-1">{value.title}</h4>
+                <p class="text-sm text-muted-foreground">{value.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(50px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .about-image,
+  .about-content,
+  .value-item {
+    opacity: 0;
+  }
+
+  .about-image.animate-in {
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+
+  .about-content.animate-in {
+    animation: fadeInRight 0.8s ease-out 0.2s forwards;
+  }
+
+  .value-item.animate-in {
+    animation: fadeInUp 0.5s ease-out forwards;
+  }
+</style>
+
+<script>
+  // Intersection Observer for animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '-100px',
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+      }
+    });
+  }, observerOptions);
+
+  // Observe image and content sections
+  const aboutImage = document.querySelector('.about-image');
+  const aboutContent = document.querySelector('.about-content');
+
+  if (aboutImage) observer.observe(aboutImage);
+  if (aboutContent) observer.observe(aboutContent);
+
+  // Animate value items with stagger
+  const valueItems = document.querySelectorAll('.value-item');
+  valueItems.forEach((item) => {
+    const delay = parseFloat(item.getAttribute('data-delay') || '0');
+    (item as HTMLElement).style.animationDelay = `${delay}s`;
+    observer.observe(item);
+  });
+</script>
