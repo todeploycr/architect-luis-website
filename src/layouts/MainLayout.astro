@@ -6,39 +6,235 @@ import Footer from "@/components/layout/Footer.astro";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: "website" | "article";
 }
 
 const { 
   title = "LARQ Arquitectura - Diseño y Construcción de Espacios Únicos", 
-  description = "Más de 15 años creando arquitectura contemporánea que integra funcionalidad, estética y armonía con el entorno natural."
+  description = "Estudio de arquitectura en Costa Rica con más de 6 años de experiencia. Diseño residencial, comercial y bioclimático. Proyectos sostenibles que integran funcionalidad, estética y armonía con el entorno.",
+  image = "/og-image.jpg", // Deberás crear esta imagen
+  type = "website"
 } = Astro.props;
 
+const siteUrl = "https://larqarquitectura.com"; // Cambiar por tu dominio real
 const siteTitle = title.includes("LARQ") ? title : `${title} | LARQ Arquitectura`;
+const siteImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
+
+// URLs dinámicas para canonical y OG
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+const currentUrl = canonical;
 ---
 
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     
-    <!-- SEO -->
+    <!-- SEO Básico -->
     <title>{siteTitle}</title>
     <meta name="description" content={description} />
+    <meta name="author" content="LARQ Arquitectura" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href={canonical} />
+    <meta name="geo.region" content="CR" />
+    <meta name="geo.placename" content="Costa Rica" />
+    <meta name="keywords" content="arquitectura costa rica, diseño arquitectónico, arquitectura residencial, arquitectura comercial, arquitectura sostenible, arquitectura bioclimática, estudio arquitectura, diseño casas, construcción costa rica" />
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={currentUrl} />
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={description} />
+    <meta property="og:image" content={siteImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="LARQ Arquitectura - Diseño arquitectónico contemporáneo en Costa Rica" />
+    <meta property="og:locale" content="es_CR" />
+    <meta property="og:site_name" content="LARQ Arquitectura" />
     
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:title" content={siteTitle} />
-    <meta property="twitter:description" content={description} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={currentUrl} />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={siteImageUrl} />
+    <meta name="twitter:image:alt" content="LARQ Arquitectura - Estudio de arquitectura" />
+    
+    <!-- Datos estructurados JSON-LD para Negocio Local -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": ["ProfessionalService", "Architect", "LocalBusiness"],
+      "name": "LARQ Arquitectura",
+      "image": siteImageUrl,
+      "logo": siteImageUrl,
+      "url": siteUrl,
+      "telephone": "+506-XXXX-XXXX", // Cambiar por teléfono real
+      "email": "info@larqarquitectura.com", // Cambiar por email real
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "San José", // Cambiar según ubicación
+        "addressRegion": "San José",
+        "addressCountry": "CR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "9.9281", // Coordenadas de San José, ajustar según ubicación real
+        "longitude": "-84.0907"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "San José"
+        },
+        {
+          "@type": "City",
+          "name": "Heredia"
+        },
+        {
+          "@type": "City",
+          "name": "Guanacaste"
+        },
+        {
+          "@type": "Country",
+          "name": "Costa Rica"
+        }
+      ],
+      "description": description,
+      "slogan": "Diseñamos espacios que transforman la forma de vivir",
+      "foundingDate": "2018", // Ajustar según año real de fundación
+      "knowsAbout": [
+        "Arquitectura residencial",
+        "Arquitectura comercial",
+        "Diseño de interiores",
+        "Arquitectura bioclimática",
+        "Arquitectura sostenible",
+        "Planificación urbana",
+        "Supervisión de obra",
+        "Diseño arquitectónico"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Arquitectura",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Arquitectura Residencial",
+              "description": "Diseño de viviendas unifamiliares, condominios y desarrollos habitacionales con enfoque en confort, funcionalidad y estética contemporánea"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Arquitectura Comercial",
+              "description": "Proyectos comerciales e institucionales que maximizan la eficiencia espacial y refuerzan la identidad corporativa"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Arquitectura Bioclimática",
+              "description": "Diseño sostenible que aprovecha recursos naturales, minimiza impacto ambiental y promueve la eficiencia energética"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Diseño de Interiores",
+              "description": "Creación de ambientes interiores que optimizan la experiencia del usuario, integrando mobiliario, iluminación y acabados"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Planificación Urbana",
+              "description": "Diseño de espacios públicos, planificación de desarrollos urbanísticos y estudios de ordenamiento territorial"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Consultoría y Supervisión",
+              "description": "Acompañamiento integral en todas las fases del proyecto, desde estudios de factibilidad hasta la supervisión de obra"
+            }
+          }
+        ]
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "08:00",
+          "closes": "17:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/larqarquitectura", // Ajustar según redes sociales reales
+        "https://www.facebook.com/larqarquitectura",
+        "https://wa.me/506XXXXXXXX" // Ajustar número de WhatsApp
+      ],
+      "paymentAccepted": "Transferencia bancaria, SINPE Móvil, Efectivo, Tarjeta",
+      "currenciesAccepted": "CRC, USD"
+    })} />
 
-    <!-- Fonts -->
+    <!-- Datos estructurados para Organización -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "LARQ Arquitectura",
+      "alternateName": "LARQ",
+      "url": siteUrl,
+      "logo": siteImageUrl,
+      "description": "Estudio de arquitectura especializado en diseño residencial, comercial y sostenible en Costa Rica",
+      "foundingDate": "2018", // Ajustar
+      "email": "info@larqarquitectura.com", // Ajustar
+      "telephone": "+506-XXXX-XXXX", // Ajustar
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "CR",
+        "addressRegion": "San José",
+        "addressLocality": "San José"
+      },
+      "sameAs": [
+        "https://www.instagram.com/larqarquitectura",
+        "https://www.facebook.com/larqarquitectura"
+      ]
+    })} />
+
+    <!-- Datos estructurados para Breadcrumb (se puede personalizar por página) -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": siteUrl
+        }
+      ]
+    })} />
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    
+    <!-- Theme & PWA -->
+    <meta name="theme-color" content="#4C9141" />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- Fonts - Preconnect para mejor performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
