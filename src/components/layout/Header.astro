@@ -2,11 +2,10 @@
 // Header.astro
 const navLinks = [
   { name: "Inicio", href: "/" },
-  { name: "Nosotros", href: "/#nosotros" },
-  { name: "Servicios", href: "/#servicios" },
-  { name: "Proyectos", href: "/#proyectos" },
-  { name: "Clientes", href: "/#clientes" },
-  { name: "Contacto", href: "/#contacto" },
+  { name: "Nosotros", href: "/about" },
+  { name: "Servicios", href: "/services-page" },
+  { name: "Proyectos", href: "/projects-page" },
+  { name: "Contacto", href: "/contact" },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -18,14 +17,18 @@ const isHomePage = currentPath === "/";
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-black/40 backdrop-blur-sm"
 >
   <nav class="container-corporate flex items-center justify-between py-4">
-    <!-- Logo -->
-    <a href="/" class="relative z-10">
+    <!-- Logo with Text -->
+    <a href="/" class="relative z-5 flex items-center gap-2.5">
       <img
         src="/src/assets/img/logo-larq.png"
         alt="LARQ Arquitectura"
         id="logo"
-        class="h-12 transition-all duration-300"
+        class="h-19 md:h-10 transition-all duration-300"
       />
+      <div class="flex flex-col leading-none justify-center" style="height: 2.5rem;">
+        <span class="text-white text-sm md:text-base font-bold tracking-wide">LARQ</span>
+        <span class="text-white/90 text-[8px] md:text-[9px] font-light tracking-[0.2em] uppercase mt-0.5">ARQUITECTURA</span>
+      </div>
     </a>
 
     <!-- Desktop Navigation -->

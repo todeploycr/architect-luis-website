@@ -2,95 +2,93 @@
 // Hero.astro
 ---
 
-<section id="/#inicio" class="relative min-h-screen flex items-center">
+<section id="inicio" class="relative min-h-screen flex items-center">
   <!-- Background Image -->
   <div class="absolute inset-0">
     <img
-      src="/assets/project-modern-house.png"
+      src="/src/assets/img/project-modern-house.png"
       alt="Arquitectura moderna LARQ"
-      class="w-full h-full object-cover"
+      class="w-full h-full object-cover brightness-90"
     />
-    <div class="hero-overlay absolute inset-0" />
+    <!-- Enhanced gradient overlay for warmer atmosphere -->
+    <div class="absolute inset-0 bg-gradient-to-br from-[#E2C200]/8 via-[#E2C200]/5 to-[#E2C200]/2" />
+    <!-- Additional warm overlay for sunset/golden hour effect -->
+    <div class="absolute inset-0 bg-gradient-to-t from-amber-900/20 via-transparent to-slate-900/5" />
   </div>
 
   <!-- Content -->
-  <div class="container-corporate relative z-10 pt-20">
-    <div class="max-w-3xl">
+  <div class="container-corporate relative z-10">
+    <div class="max-w-4xl">
       <div class="hero-element opacity-0" data-delay="0">
-        <span class="inline-block text-cta font-medium tracking-widest text-sm uppercase mb-6">
-          Estudio de Arquitectura
+        <span class="inline-block text-[#E2C200] font-medium tracking-[0.3em] text-xs uppercase mb-4">
+          ESTUDIO DE ARQUITECTURA
         </span>
       </div>
 
       <h1
-        class="hero-element opacity-0 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-semibold text-corporate-dark-foreground leading-tight mb-6"
+        class="hero-element opacity-0 text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-serif font-normal text-white leading-[1.1] mb-6"
         data-delay="200"
       >
-        Diseñamos espacios que{" "}
-        <span class="text-cta">transforman</span> la forma de vivir
+        Diseñamos espacios que <span class="text-[#E2C200] font-normal">transforman</span> la forma de vivir
       </h1>
 
       <p
-        class="hero-element opacity-0 text-lg md:text-xl text-corporate-dark-foreground/80 mb-10 max-w-2xl leading-relaxed"
+        class="hero-element opacity-0 text-base md:text-lg text-white/85 mb-10 max-w-3xl leading-relaxed"
         data-delay="400"
       >
-        Más de 15 años creando arquitectura contemporánea que integra funcionalidad, 
+        Más de 6 años creando arquitectura contemporánea que integra funcionalidad, 
         estética y armonía con el entorno natural. Soluciones integrales para 
         proyectos residenciales, comerciales e institucionales.
       </p>
 
       <div
-        class="hero-element opacity-0 flex flex-col sm:flex-row gap-4"
+        class="hero-element opacity-0 flex flex-col sm:flex-row gap-4 items-start"
         data-delay="600"
       >
-        <a href="#proyectos" class="btn-cta rounded-sm text-center">
+        <a 
+          href="/projectspage" 
+          class="bg-[#E2C200] hover:bg-[#d4b600] text-[#3D3635] px-8 py-3.5 font-semibold tracking-wide transition-all duration-300 rounded-sm shadow-lg hover:shadow-xl"
+        >
           Ver Proyectos
         </a>
         <a
-          href="#nosotros"
-          class="border-2 border-corporate-dark-foreground/30 text-corporate-dark-foreground px-8 py-3 font-medium tracking-wide transition-all duration-300 hover:bg-corporate-dark-foreground hover:text-corporate-dark rounded-sm text-center"
+          href="/about"
+          class="border-2 border-white/70 text-white px-8 py-3.5 font-medium tracking-wide transition-all duration-300 hover:bg-white/10 hover:border-white rounded-sm backdrop-blur-sm"
         >
           Conocer la Firma
         </a>
       </div>
     </div>
 
-    <!-- Stats Bar -->
+    <!-- Stats Bar - More compact -->
     <div
-      class="hero-element opacity-0 mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl"
+      class="hero-element opacity-0 mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-4xl"
       data-delay="800"
     >
-      <div class="text-center md:text-left">
-        <div class="text-3xl md:text-4xl font-display font-bold text-cta mb-1">
-          15+
+      <div>
+        <div class="text-4xl md:text-5xl font-serif font-normal text-[#E2C200] mb-1">
+          6<sup class="text-xl md:text-2xl">+</sup>
         </div>
-        <div class="text-sm text-corporate-dark-foreground/70">
+        <div class="text-xs md:text-sm text-white/75 tracking-wide">
           Años de Experiencia
         </div>
       </div>
-      <div class="text-center md:text-left">
-        <div class="text-3xl md:text-4xl font-display font-bold text-cta mb-1">
-          200+
+      <div>
+        <div class="text-4xl md:text-5xl font-serif font-normal text-[#E2C200] mb-1">
+          20<sup class="text-xl md:text-2xl">+</sup>
         </div>
-        <div class="text-sm text-corporate-dark-foreground/70">
+        <div class="text-xs md:text-sm text-white/75 tracking-wide">
           Proyectos Realizados
         </div>
       </div>
-      <div class="text-center md:text-left">
-        <div class="text-3xl md:text-4xl font-display font-bold text-cta mb-1">
-          50+
+      <div>
+        <div class="text-4xl md:text-5xl font-serif font-normal text-[#E2C200] mb-1">
+          5<sup class="text-xl md:text-2xl">+</sup>
         </div>
-        <div class="text-sm text-corporate-dark-foreground/70">
+        <div class="text-xs md:text-sm text-white/75 tracking-wide">
           Clientes Corporativos
         </div>
       </div>
-      <div class="text-center md:text-left">
-        <div class="text-3xl md:text-4xl font-display font-bold text-cta mb-1">
-          8
-        </div>
-        <div class="text-sm text-corporate-dark-foreground/70">
-          Reconocimientos
-        </div>
       </div>
     </div>
   </div>
@@ -99,7 +97,7 @@
   <a
     href="#nosotros"
     id="scroll-indicator"
-    class="absolute bottom-8 left-1/2 -translate-x-1/2 text-corporate-dark-foreground/60 hover:text-cta transition-colors cursor-pointer opacity-0"
+    class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 hover:text-[#E2C200] transition-all duration-300 cursor-pointer opacity-0"
   >
     <div class="animate-bounce-slow">
       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -137,10 +135,19 @@
   .animate-bounce-slow {
     animation: bounce-slow 1.5s ease-in-out infinite;
   }
+
+  /* Enhanced text shadow for better readability */
+  h1 {
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5),
+                 0 4px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  p {
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+  }
 </style>
 
 <script>
-  // Animate hero elements on load
   document.addEventListener('DOMContentLoaded', () => {
     const heroElements = document.querySelectorAll('.hero-element');
     
@@ -151,7 +158,6 @@
       }, parseInt(delay));
     });
 
-    // Animate scroll indicator
     const scrollIndicator = document.getElementById('scroll-indicator');
     setTimeout(() => {
       if (scrollIndicator) {

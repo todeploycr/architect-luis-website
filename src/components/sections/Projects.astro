@@ -1,5 +1,5 @@
 ---
-// ProjectsSection.astro
+// src/components/sections/Projects.astro
 const categories = ["Todos", "Residencial", "Comercial", "Bioclimático"];
 
 const projects = [
@@ -9,7 +9,7 @@ const projects = [
     category: "Residencial",
     location: "Guanacaste, Costa Rica",
     year: "2024",
-    image: "/assets/project-modern-house.png",
+    image: "/src/assets/img/project-modern-house.png",
     description: "Residencia contemporánea con acabados de alta gama y diseño minimalista.",
   },
   {
@@ -18,7 +18,7 @@ const projects = [
     category: "Residencial",
     location: "San José, Costa Rica",
     year: "2023",
-    image: "/assets/project-interior.png",
+    image: "/src/assets/img/project-interior.png",
     description: "Interior moderno con integración de vegetación y espacios abiertos.",
   },
   {
@@ -27,7 +27,7 @@ const projects = [
     category: "Bioclimático",
     location: "Nicoya, Costa Rica",
     year: "2023",
-    image: "/assets/project-cabin-interior.png",
+    image: "/src/assets/img/project-cabin-interior.png",
     description: "Hospedaje sostenible construido con materiales locales y técnicas tradicionales.",
   },
   {
@@ -36,7 +36,7 @@ const projects = [
     category: "Bioclimático",
     location: "Nosara, Costa Rica",
     year: "2024",
-    image: "/assets/project-tropical-cabin.png",
+    image: "/src/assets/img/project-tropical-cabin.png",
     description: "Arquitectura tropical que se integra armónicamente con su entorno natural.",
   },
   {
@@ -45,46 +45,46 @@ const projects = [
     category: "Residencial",
     location: "Tamarindo, Costa Rica",
     year: "2023",
-    image: "/assets/project-spiral-stairs.png",
+    image: "/src/assets/img/project-spiral-stairs.png",
     description: "Vivienda con escalera escultórica y diseño biofílico.",
   },
   {
     id: 6,
-    title: "Villa Horizonte",
-    category: "Comercial",
+    title: "Villa Tropical",
+    category: "Residencial",
     location: "Liberia, Costa Rica",
     year: "2024",
-    image: "/assets/project-white-house.png",
+    image: "/src/assets/img/project-white-house.png",
     description: "Proyecto mixto con espacios comerciales y residenciales de alta categoría.",
   },
 ];
 ---
 
-<section id="/#proyectos" class="section-padding bg-background">
+<section class="py-20 bg-[#E3D9C6]/20">
   <div class="container-corporate">
     <!-- Header -->
-    <div class="projects-header text-center max-w-3xl mx-auto mb-12">
-      <span class="inline-block text-primary font-medium tracking-widest text-sm uppercase mb-4">
-        Portafolio
+    <div class="text-center max-w-3xl mx-auto mb-12">
+      <span class="text-[#4C9141] font-medium tracking-[0.3em] text-xs uppercase mb-4 block">
+        PORTAFOLIO
       </span>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-foreground leading-tight mb-6">
+      <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-normal text-[#3D3635] leading-tight mb-6">
         Proyectos que definen nuestra trayectoria
       </h2>
-      <p class="text-muted-foreground leading-relaxed">
+      <p class="text-[#3D3635]/60 leading-relaxed text-base">
         Cada proyecto es una oportunidad para crear espacios únicos que trascienden 
         el tiempo y mejoran la vida de quienes los habitan.
       </p>
     </div>
 
     <!-- Category Filter -->
-    <div class="projects-filter flex flex-wrap justify-center gap-4 mb-12">
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
       {categories.map((category) => (
         <button
           data-category={category}
-          class={`category-btn px-6 py-2 text-sm font-medium rounded-sm transition-all duration-300 ${
+          class={`category-btn px-6 py-2.5 text-sm font-medium rounded-sm transition-all duration-300 ${
             category === "Todos"
-              ? "bg-primary text-primary-foreground"
-              : "bg-secondary text-foreground hover:bg-accent"
+              ? "bg-[#4C9141] text-white"
+              : "bg-[#E3D9C6]/50 text-[#3D3635] hover:bg-[#E3D9C6]"
           }`}
         >
           {category}
@@ -94,140 +94,41 @@ const projects = [
 
     <!-- Projects Grid -->
     <div class="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {projects.map((project, index) => (
+      {projects.map((project) => (
         <div
           class="project-item group cursor-pointer"
           data-category={project.category}
-          data-delay={0.1 * index}
         >
-          <div class="project-card h-80 mb-4">
+          <div class="relative overflow-hidden rounded-sm h-[400px] mb-4">
             <img
               src={project.image}
               alt={project.title}
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
+            <!-- Dark gradient overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-[#3D3635]/90 via-[#3D3635]/40 to-transparent" />
+            
+            <!-- Content -->
             <div class="absolute inset-0 flex flex-col justify-end p-6 z-10">
-              <span class="text-cta text-sm font-medium mb-2">
+              <span class="text-[#E2C200] text-sm font-medium mb-2 uppercase tracking-wide">
                 {project.category}
               </span>
-              <h3 class="text-xl font-display font-semibold text-corporate-dark-foreground mb-1">
+              <h3 class="text-2xl font-serif font-normal text-white mb-1">
                 {project.title}
               </h3>
-              <p class="text-corporate-dark-foreground/70 text-sm">
+              <p class="text-white/80 text-sm">
                 {project.location} · {project.year}
               </p>
             </div>
-            <div class="absolute top-4 right-4 w-10 h-10 bg-cta rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
-              <svg class="w-5 h-5 text-cta-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M17 7H7m10 0v10"/>
-              </svg>
-            </div>
           </div>
-          <p class="text-muted-foreground text-sm leading-relaxed">
-            {project.description}
-          </p>
         </div>
       ))}
     </div>
 
-    <!-- CTA -->
-    <div class="projects-cta text-center mt-16">
-      <a href="#contacto" class="btn-outline-corporate rounded-sm inline-block">
-        Ver Todos los Proyectos
-      </a>
-    </div>
-  </div>
-</section>
-
-<style>
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .projects-header,
-  .projects-filter,
-  .projects-cta {
-    opacity: 0;
-  }
-
-  .projects-header.animate-in {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-
-  .projects-filter.animate-in {
-    animation: fadeInDown 0.6s ease-out 0.2s forwards;
-  }
-
-  .project-item {
-    opacity: 0;
-  }
-
-  .project-item.animate-in {
-    animation: fadeInUp 0.6s ease-out forwards;
-  }
-
-  .project-item.hide {
-    display: none;
-  }
-
-  .projects-cta.animate-in {
-    animation: fadeInUp 0.6s ease-out 0.6s forwards;
-  }
-</style>
-
 <script>
-  // Intersection Observer for animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '-100px',
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('animate-in');
-      }
-    });
-  }, observerOptions);
-
-  // Observe sections
-  const header = document.querySelector('.projects-header');
-  const filter = document.querySelector('.projects-filter');
-  const cta = document.querySelector('.projects-cta');
-
-  if (header) observer.observe(header);
-  if (filter) observer.observe(filter);
-  if (cta) observer.observe(cta);
-
-  // Animate project items with stagger
-  const projectItems = document.querySelectorAll('.project-item');
-  projectItems.forEach((item) => {
-    const delay = parseFloat(item.getAttribute('data-delay') || '0');
-    (item as HTMLElement).style.animationDelay = `${delay}s`;
-    observer.observe(item);
-  });
-
   // Category filtering
-  let activeCategory = 'Todos';
   const categoryButtons = document.querySelectorAll('.category-btn');
+  const projectItems = document.querySelectorAll('.project-item');
 
   categoryButtons.forEach((btn) => {
     btn.addEventListener('click', () => {
@@ -235,26 +136,20 @@ const projects = [
       
       // Update active state
       categoryButtons.forEach((b) => {
-        b.classList.remove('bg-primary', 'text-primary-foreground');
-        b.classList.add('bg-secondary', 'text-foreground', 'hover:bg-accent');
+        b.classList.remove('bg-[#4C9141]', 'text-white');
+        b.classList.add('bg-[#E3D9C6]/50', 'text-[#3D3635]', 'hover:bg-[#E3D9C6]');
       });
-      btn.classList.remove('bg-secondary', 'text-foreground', 'hover:bg-accent');
-      btn.classList.add('bg-primary', 'text-primary-foreground');
-      
-      activeCategory = category;
+      btn.classList.remove('bg-[#E3D9C6]/50', 'text-[#3D3635]', 'hover:bg-[#E3D9C6]');
+      btn.classList.add('bg-[#4C9141]', 'text-white');
       
       // Filter projects
       projectItems.forEach((item) => {
         const itemCategory = item.getAttribute('data-category');
         
-        if (activeCategory === 'Todos' || itemCategory === activeCategory) {
-          item.classList.remove('hide');
-          // Re-trigger animation
-          item.classList.remove('animate-in');
-          void (item as HTMLElement).offsetWidth; // Trigger reflow
-          item.classList.add('animate-in');
+        if (category === 'Todos' || itemCategory === category) {
+          (item as HTMLElement).style.display = 'block';
         } else {
-          item.classList.add('hide');
+          (item as HTMLElement).style.display = 'none';
         }
       });
     });
