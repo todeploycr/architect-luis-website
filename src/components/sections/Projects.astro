@@ -60,28 +60,28 @@ const projects = [
 ];
 ---
 
-<section class="py-20 bg-[#E3D9C6]/20">
-  <div class="container-corporate">
+<section class="py-12 md:py-16 lg:py-20 bg-[#E3D9C6]/20">
+  <div class="container-corporate px-4 md:px-6">
     <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto mb-12">
-      <span class="text-[#4C9141] font-medium tracking-[0.3em] text-xs uppercase mb-4 block">
+    <div class="text-center max-w-3xl mx-auto mb-8 md:mb-10 lg:mb-12">
+      <span class="text-[#4C9141] font-medium tracking-[0.3em] text-xs uppercase mb-3 md:mb-4 block">
         PORTAFOLIO
       </span>
-      <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-normal text-[#3D3635] leading-tight mb-6">
+      <h2 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif font-normal text-[#3D3635] leading-tight mb-4 md:mb-6 px-4">
         Proyectos que definen nuestra trayectoria
       </h2>
-      <p class="text-[#3D3635]/60 leading-relaxed text-base">
+      <p class="text-[#3D3635]/60 leading-relaxed text-sm md:text-base px-4">
         Cada proyecto es una oportunidad para crear espacios únicos que trascienden 
         el tiempo y mejoran la vida de quienes los habitan.
       </p>
     </div>
 
     <!-- Category Filter -->
-    <div class="flex flex-wrap justify-center gap-4 mb-12">
+    <div class="flex flex-wrap justify-center gap-2 md:gap-3 lg:gap-4 mb-8 md:mb-10 lg:mb-12 px-2">
       {categories.map((category) => (
         <button
           data-category={category}
-          class={`category-btn px-6 py-2.5 text-sm font-medium rounded-sm transition-all duration-300 ${
+          class={`category-btn px-4 py-2 md:px-5 md:py-2.5 lg:px-6 text-xs md:text-sm font-medium rounded-sm transition-all duration-300 whitespace-nowrap ${
             category === "Todos"
               ? "bg-[#4C9141] text-white"
               : "bg-[#E3D9C6]/50 text-[#3D3635] hover:bg-[#E3D9C6]"
@@ -93,30 +93,30 @@ const projects = [
     </div>
 
     <!-- Projects Grid -->
-    <div class="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="projects-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
       {projects.map((project) => (
         <div
-          class="project-item group cursor-pointer"
+          class="project-item group cursor-pointer transition-opacity duration-300"
           data-category={project.category}
         >
-          <div class="relative overflow-hidden rounded-sm h-[400px] mb-4">
+          <div class="relative overflow-hidden rounded-sm h-75 sm:h-87,5 md:h-95 lg:h-100 mb-3 md:mb-4 shadow-md hover:shadow-xl transition-shadow duration-300">
             <img
               src={project.image}
               alt={project.title}
               class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />
             <!-- Dark gradient overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-[#3D3635]/90 via-[#3D3635]/40 to-transparent" />
+            <div class="absolute inset-0 bg-linear-to-t from-[#3D3635]/90 via-[#3D3635]/40 to-transparent" />
             
             <!-- Content -->
-            <div class="absolute inset-0 flex flex-col justify-end p-6 z-10">
-              <span class="text-[#E2C200] text-sm font-medium mb-2 uppercase tracking-wide">
+            <div class="absolute inset-0 flex flex-col justify-end p-4 md:p-5 lg:p-6 z-10">
+              <span class="text-[#E2C200] text-xs md:text-sm font-medium mb-1.5 md:mb-2 uppercase tracking-wide">
                 {project.category}
               </span>
-              <h3 class="text-2xl font-serif font-normal text-white mb-1">
+              <h3 class="text-xl md:text-2xl font-serif font-normal text-white mb-1">
                 {project.title}
               </h3>
-              <p class="text-white/80 text-sm">
+              <p class="text-white/80 text-xs md:text-sm">
                 {project.location} · {project.year}
               </p>
             </div>
@@ -124,34 +124,56 @@ const projects = [
         </div>
       ))}
     </div>
+  </div>
+</section>
 
 <script>
-  // Category filtering
-  const categoryButtons = document.querySelectorAll('.category-btn');
-  const projectItems = document.querySelectorAll('.project-item');
+  function initProjectFilter() {
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const projectItems = document.querySelectorAll('.project-item');
 
-  categoryButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const category = btn.getAttribute('data-category') || 'Todos';
-      
-      // Update active state
-      categoryButtons.forEach((b) => {
-        b.classList.remove('bg-[#4C9141]', 'text-white');
-        b.classList.add('bg-[#E3D9C6]/50', 'text-[#3D3635]', 'hover:bg-[#E3D9C6]');
-      });
-      btn.classList.remove('bg-[#E3D9C6]/50', 'text-[#3D3635]', 'hover:bg-[#E3D9C6]');
-      btn.classList.add('bg-[#4C9141]', 'text-white');
-      
-      // Filter projects
-      projectItems.forEach((item) => {
-        const itemCategory = item.getAttribute('data-category');
+    if (!categoryButtons.length || !projectItems.length) return;
+
+    categoryButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-category') || 'Todos';
         
-        if (category === 'Todos' || itemCategory === category) {
-          (item as HTMLElement).style.display = 'block';
-        } else {
-          (item as HTMLElement).style.display = 'none';
-        }
+        // Update active state
+        categoryButtons.forEach((b) => {
+          b.classList.remove('bg-[#4C9141]', 'text-white');
+          b.classList.add('bg-[#E3D9C6]/50', 'text-[#3D3635]', 'hover:bg-[#E3D9C6]');
+        });
+        btn.classList.remove('bg-[#E3D9C6]/50', 'text-[#3D3635]', 'hover:bg-[#E3D9C6]');
+        btn.classList.add('bg-[#4C9141]', 'text-white');
+        
+        // Filter projects with fade animation
+        projectItems.forEach((item) => {
+          const itemCategory = item.getAttribute('data-category');
+          const htmlItem = item as HTMLElement;
+          
+          if (category === 'Todos' || itemCategory === category) {
+            htmlItem.style.display = 'block';
+            // Trigger reflow for animation
+            void htmlItem.offsetWidth;
+            htmlItem.style.opacity = '1';
+          } else {
+            htmlItem.style.opacity = '0';
+            setTimeout(() => {
+              htmlItem.style.display = 'none';
+            }, 300);
+          }
+        });
       });
     });
-  });
+  }
+
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initProjectFilter);
+  } else {
+    initProjectFilter();
+  }
+
+  // Re-initialize on navigation (for Astro view transitions)
+  document.addEventListener('astro:page-load', initProjectFilter);
 </script>

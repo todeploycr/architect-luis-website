@@ -16,18 +16,18 @@ const isHomePage = currentPath === "/";
   id="main-header"
   class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-black/40 backdrop-blur-sm"
 >
-  <nav class="container-corporate flex items-center justify-between py-4">
+  <nav class="container-corporate flex items-center justify-between py-2 md:py-4 px-4">
     <!-- Logo with Text -->
-    <a href="/" class="relative z-5 flex items-center gap-2.5">
+    <a href="/" class="relative z-60 flex items-center gap-2">
       <img
         src="/src/assets/img/logo-larq.png"
         alt="LARQ Arquitectura"
         id="logo"
-        class="h-19 md:h-10 transition-all duration-300"
+        class="h-8 md:h-10 transition-all duration-300"
       />
-      <div class="flex flex-col leading-none justify-center" style="height: 2.5rem;">
-        <span class="text-white text-sm md:text-base font-bold tracking-wide">LARQ</span>
-        <span class="text-white/90 text-[8px] md:text-[9px] font-light tracking-[0.2em] uppercase mt-0.5">ARQUITECTURA</span>
+      <div class="flex flex-col leading-none justify-center">
+        <span class="text-white text-xs md:text-base font-bold tracking-wide">LARQ</span>
+        <span class="text-white/90 text-[7px] md:text-[9px] font-light tracking-[0.2em] uppercase mt-0.5">ARQUITECTURA</span>
       </div>
     </a>
 
@@ -36,16 +36,16 @@ const isHomePage = currentPath === "/";
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-[#D4AF37] text-white ${
-            currentPath === link.href ? "text-[#D4AF37]" : ""
+          class={`text-sm font-medium tracking-wide transition-colors duration-300 hover:text-[#E2C200] text-white ${
+            currentPath === link.href ? "text-[#E2C200]" : ""
           }`}
         >
           {link.name}
         </a>
       ))}
       <a 
-        href="/contacto" 
-        class="bg-[#D4AF37] hover:bg-[#B8941F] text-black px-6 py-2.5 font-semibold tracking-wide transition-all duration-300 rounded-sm text-sm"
+        href="/contact" 
+        class="bg-[#E2C200] hover:bg-[#d4b600] text-[#3D3635] px-6 py-2.5 font-semibold tracking-wide transition-all duration-300 rounded-sm text-sm"
       >
         Solicitar Consulta
       </a>
@@ -54,74 +54,169 @@ const isHomePage = currentPath === "/";
     <!-- Mobile Menu Button -->
     <button
       id="mobile-menu-button"
-      class="lg:hidden p-2 text-white transition-colors"
+      class="lg:hidden p-2 text-white transition-colors relative z-60"
       aria-label="Toggle menu"
+      type="button"
     >
-      <svg id="menu-icon" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
       </svg>
-      <svg id="close-icon" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
       </svg>
     </button>
   </nav>
-
-  <!-- Mobile Menu -->
-  <div
-    id="mobile-menu"
-    class="lg:hidden bg-black/95 backdrop-blur-md border-t border-white/10 overflow-hidden transition-all duration-300 max-h-0 opacity-0"
-  >
-    <div class="container-corporate py-6 flex flex-col gap-4">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class={`block text-lg font-medium py-2 border-b border-white/10 hover:text-[#D4AF37] transition-colors text-white ${
-            currentPath === link.href ? "text-[#D4AF37]" : ""
-          }`}
-        >
-          {link.name}
-        </a>
-      ))}
-      <a 
-        href="/contacto" 
-        class="bg-[#D4AF37] hover:bg-[#B8941F] text-black px-6 py-3 font-semibold tracking-wide transition-all duration-300 rounded-sm text-center mt-4"
-      >
-        Solicitar Consulta
-      </a>
-    </div>
-  </div>
 </header>
 
+<!-- Mobile Menu Overlay (Outside header) -->
+<div
+  id="mobile-menu-overlay"
+  class="fixed inset-0 bg-black/70 backdrop-blur-sm lg:hidden opacity-0 pointer-events-none z-51 transition-opacity duration-300 ease-out will-change-opacity"
+>
+</div>
+
+<!-- Mobile Menu (Outside header) -->
+<div
+  id="mobile-menu"
+  class="lg:hidden fixed top-0 right-0 bottom-0 w-70 bg-[#3D3635] shadow-2xl translate-x-full transition-transform duration-300 ease-out z-52 overflow-y-auto will-change-transform"
+>
+  <div class="pt-20 pb-6 px-6 flex flex-col gap-1">
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class={`mobile-menu-link block text-base font-medium py-3 px-4 border-b border-white/10 hover:bg-white/5 hover:text-[#E2C200] transition-colors text-white rounded-sm ${
+          currentPath === link.href ? "text-[#E2C200] bg-white/5" : ""
+        }`}
+      >
+        {link.name}
+      </a>
+    ))}
+    <a 
+      href="/contact" 
+      class="mobile-menu-link bg-[#E2C200] hover:bg-[#d4b600] text-[#3D3635] px-6 py-3 font-semibold tracking-wide transition-all duration-300 rounded-sm text-center mt-6"
+    >
+      Solicitar Consulta
+    </a>
+  </div>
+</div>
+
+<style>
+  /* Prevent body scroll when mobile menu is open */
+  body.mobile-menu-open {
+    overflow: hidden;
+  }
+</style>
+
 <script>
-  // Mobile menu toggle
-  const menuButton = document.getElementById("mobile-menu-button");
-  const mobileMenu = document.getElementById("mobile-menu");
-  const menuIcon = document.getElementById("menu-icon");
-  const closeIcon = document.getElementById("close-icon");
+  function initMobileMenu() {
+    const menuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const mobileMenuOverlay = document.getElementById("mobile-menu-overlay");
+    const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+    const body = document.body;
 
-  menuButton?.addEventListener("click", () => {
-    const isOpen = mobileMenu?.classList.contains("max-h-96");
-    
-    if (isOpen) {
-      mobileMenu?.classList.remove("max-h-96", "opacity-100");
-      mobileMenu?.classList.add("max-h-0", "opacity-0");
-      menuIcon?.classList.remove("hidden");
-      closeIcon?.classList.add("hidden");
-    } else {
-      mobileMenu?.classList.remove("max-h-0", "opacity-0");
-      mobileMenu?.classList.add("max-h-96", "opacity-100");
-      menuIcon?.classList.add("hidden");
-      closeIcon?.classList.remove("hidden");
+    if (!menuButton || !mobileMenu || !mobileMenuOverlay || !menuIcon || !closeIcon) {
+      console.error("Mobile menu elements not found");
+      return;
     }
-  });
 
-  // Close mobile menu when clicking on a link
-  document.querySelectorAll("#mobile-menu a").forEach(link => {
-    link.addEventListener("click", () => {
-      mobileMenu?.classList.remove("max-h-96", "opacity-100");
-      mobileMenu?.classList.add("max-h-0", "opacity-0");
-      menuIcon?.classList.remove("hidden");
-      closeIcon?.classList.add("hidden");
+    function openMobileMenu() {
+      mobileMenu.classList.remove("translate-x-full");
+      mobileMenu.classList.add("translate-x-0");
+      mobileMenuOverlay.classList.remove("opacity-0", "pointer-events-none");
+      mobileMenuOverlay.classList.add("opacity-100", "pointer-events-auto");
+      menuIcon.classList.add("hidden");
+      closeIcon.classList.remove("hidden");
+      body.classList.add("mobile-menu-open");
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove("translate-x-0");
+      mobileMenu.classList.add("translate-x-full");
+      mobileMenuOverlay.classList.remove("opacity-100", "pointer-events-auto");
+      mobileMenuOverlay.classList.add("opacity-0", "pointer-events-none");
+      menuIcon.classList.remove("hidden");
+      closeIcon.classList.add("hidden");
+      body.classList.remove("mobile-menu-open");
+    }
+
+    // Toggle mobile menu on button click
+    menuButton.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const isOpen = mobileMenu.classList.contains("translate-x-0");
+      
+      if (isOpen) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
     });
-  });
+
+    // Close mobile menu when clicking on overlay
+    mobileMenuOverlay.addEventListener("click", function() {
+      closeMobileMenu();
+    });
+
+    // Close mobile menu when clicking on a link with smooth transition
+    const mobileLinks = document.querySelectorAll(".mobile-menu-link");
+    mobileLinks.forEach(function(link) {
+      link.addEventListener("click", function(e) {
+        const href = link.getAttribute("href");
+        const currentPage = window.location.pathname;
+        
+        // If clicking on current page, just close menu
+        if (href === currentPage) {
+          closeMobileMenu();
+          return;
+        }
+        
+        // If it's an external link or has target="_blank", let it navigate normally
+        if (link.hasAttribute("target") || href.startsWith("http")) {
+          closeMobileMenu();
+          return;
+        }
+        
+        // Prevent default navigation
+        e.preventDefault();
+        
+        // Close menu with animation
+        closeMobileMenu();
+        
+        // Navigate after animation completes
+        setTimeout(function() {
+          window.location.href = href;
+        }, 300); // Match the transition duration
+      });
+    });
+
+    // Close mobile menu on escape key
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape" && mobileMenu.classList.contains("translate-x-0")) {
+        closeMobileMenu();
+      }
+    });
+
+    // Close mobile menu on window resize to desktop
+    let resizeTimer;
+    window.addEventListener("resize", function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        if (window.innerWidth >= 1024) {
+          closeMobileMenu();
+        }
+      }, 250);
+    });
+  }
+
+  // Initialize on page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileMenu);
+  } else {
+    initMobileMenu();
+  }
+
+  // Re-initialize on navigation (for Astro view transitions)
+  document.addEventListener('astro:page-load', initMobileMenu);
 </script>
