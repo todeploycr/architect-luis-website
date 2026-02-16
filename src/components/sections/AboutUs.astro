@@ -27,24 +27,7 @@ const values = [
 <section class="py-20 bg-[#E3D9C6]/30">
   <div class="container-corporate">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-      <!-- Image Side -->
-      <div class="relative order-2 lg:order-1">
-        <div class="relative overflow-hidden rounded-sm">
-          <img
-            src="/src/assets/img/project-interior.png"
-            alt="Interior moderno LARQ Arquitectura"
-            class="w-full h-125 lg:h-150 object-cover"
-          />
-        </div>
-        
-        <!-- Badge 15+ años -->
-        <div class="absolute -bottom-6 -right-6 bg-[#4C9141] text-white p-8 rounded-sm shadow-xl">
-          <div class="text-5xl font-serif font-bold leading-none mb-1">6+</div>
-          <div class="text-sm font-medium">Años de<br />Trayectoria</div>
-        </div>
-      </div>
-
-      <!-- Content Side -->
+      <!-- Header Content (shown first on mobile, right on desktop) -->
       <div class="order-1 lg:order-2">
         <span class="text-[#4C9141] font-medium tracking-[0.3em] text-xs uppercase mb-4 block">
           SOBRE LA FIRMA
@@ -61,14 +44,14 @@ const values = [
           de sus usuarios, respetando el entorno natural y cultural.
         </p>
         
-        <p class="text-[#3D3635]/70 text-base leading-relaxed mb-10">
+        <p class="text-[#3D3635]/70 text-base leading-relaxed mb-6 lg:mb-10">
           Con un equipo multidisciplinario de arquitectos, diseñadores e ingenieros, 
           ofrecemos soluciones integrales desde la conceptualización hasta la ejecución, 
           garantizando resultados que superan las expectativas de nuestros clientes.
         </p>
 
-        <!-- Values Grid -->
-        <div class="grid sm:grid-cols-2 gap-6">
+        <!-- Values Grid - Hidden on mobile/tablet, shown on desktop -->
+        <div class="hidden lg:grid sm:grid-cols-2 gap-6">
           {values.map((value) => (
             <div class="flex gap-4">
               <div class="shrink-0 w-12 h-12 bg-[#4C9141]/10 rounded-sm flex items-center justify-center">
@@ -100,6 +83,57 @@ const values = [
             </div>
           ))}
         </div>
+      </div>
+
+      <!-- Image (shown in middle on mobile/tablet, left on desktop) -->
+      <div class="relative order-2 lg:order-1">
+        <div class="relative overflow-hidden rounded-sm">
+          <img
+            src="/src/assets/img/project-interior.png"
+            alt="Interior moderno LARQ Arquitectura"
+            class="w-full h-125 lg:h-150 object-cover"
+          />
+        </div>
+        
+        <!-- Badge 6+ años -->
+        <div class="absolute -bottom-6 -right-6 bg-[#4C9141] text-white p-8 rounded-sm shadow-xl">
+          <div class="text-5xl font-serif font-bold leading-none mb-1">6+</div>
+          <div class="text-sm font-medium">Años de<br />Trayectoria</div>
+        </div>
+      </div>
+
+      <!-- Values Grid - Shown on mobile/tablet below image, hidden on desktop -->
+      <div class="order-3 lg:hidden grid sm:grid-cols-2 gap-6">
+        {values.map((value) => (
+          <div class="flex gap-4">
+            <div class="shrink-0 w-12 h-12 bg-[#4C9141]/10 rounded-sm flex items-center justify-center">
+              {value.name === "Building2" && (
+                <svg class="w-6 h-6 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+              )}
+              {value.name === "Leaf" && (
+                <svg class="w-6 h-6 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
+                </svg>
+              )}
+              {value.name === "Users" && (
+                <svg class="w-6 h-6 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+              )}
+              {value.name === "Award" && (
+                <svg class="w-6 h-6 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                </svg>
+              )}
+            </div>
+            <div>
+              <h4 class="font-semibold text-[#3D3635] mb-1 text-base">{value.title}</h4>
+              <p class="text-sm text-[#3D3635]/60 leading-relaxed">{value.description}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </div>
