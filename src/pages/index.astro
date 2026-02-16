@@ -1,6 +1,9 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
+import modernHouse from '@/assets/img/project-modern-house.png';
+import whiteHouse from '@/assets/img/project-white-house.png';
+import tropicalCabin from '@/assets/img/project-tropical-cabin.png';
 ---
 
 <MainLayout 
@@ -114,7 +117,7 @@ import Hero from "@/components/sections/Hero.astro";
         <div class="group cursor-pointer">
           <div class="relative overflow-hidden rounded-sm mb-4 h-75">
             <img
-              src="/src/assets/img/project-modern-house.png"
+              src={modernHouse.src}
               alt="Proyecto destacado"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -130,7 +133,7 @@ import Hero from "@/components/sections/Hero.astro";
         <div class="group cursor-pointer">
           <div class="relative overflow-hidden rounded-sm mb-4 h-75">
             <img
-              src="/src/assets/img/project-white-house.png"
+              src={whiteHouse.src}
               alt="Proyecto destacado"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />
@@ -146,7 +149,7 @@ import Hero from "@/components/sections/Hero.astro";
         <div class="group cursor-pointer">
           <div class="relative overflow-hidden rounded-sm mb-4 h-75">
             <img
-              src="/src/assets/img/project-tropical-cabin.png"
+              src={tropicalCabin.src}
               alt="Proyecto destacado"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             />

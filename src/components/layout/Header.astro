@@ -1,5 +1,7 @@
 ---
 // Header.astro
+import logoLarq from '@/assets/img/logo-larq.png';
+
 const navLinks = [
   { name: "Inicio", href: "/" },
   { name: "Nosotros", href: "/about" },
@@ -20,7 +22,7 @@ const isHomePage = currentPath === "/";
     <!-- Logo with Text -->
     <a href="/" class="relative z-60 flex items-center gap-2">
       <img
-        src="/src/assets/img/logo-larq.png"
+        src={logoLarq.src}
         alt="LARQ Arquitectura"
         id="logo"
         class="h-8 md:h-10 transition-all duration-300"

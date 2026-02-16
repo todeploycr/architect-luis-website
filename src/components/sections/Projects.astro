@@ -1,5 +1,12 @@
 ---
 // src/components/sections/Projects.astro
+import modernHouse from '@/assets/img/project-modern-house.png';
+import projectInterior from '@/assets/img/project-interior.png';
+import cabinInterior from '@/assets/img/project-cabin-interior.png';
+import tropicalCabin from '@/assets/img/project-tropical-cabin.png';
+import spiralStairs from '@/assets/img/project-spiral-stairs.png';
+import whiteHouse from '@/assets/img/project-white-house.png';
+
 const categories = ["Todos", "Residencial", "Comercial", "Bioclimático"];
 
 const projects = [
@@ -9,7 +16,7 @@ const projects = [
     category: "Residencial",
     location: "Guanacaste, Costa Rica",
     year: "2024",
-    image: "/src/assets/img/project-modern-house.png",
+    image: modernHouse.src,
     description: "Residencia contemporánea con acabados de alta gama y diseño minimalista.",
   },
   {
@@ -18,7 +25,7 @@ const projects = [
     category: "Residencial",
     location: "San José, Costa Rica",
     year: "2023",
-    image: "/src/assets/img/project-interior.png",
+    image: projectInterior.src,
     description: "Interior moderno con integración de vegetación y espacios abiertos.",
   },
   {
@@ -27,7 +34,7 @@ const projects = [
     category: "Bioclimático",
     location: "Nicoya, Costa Rica",
     year: "2023",
-    image: "/src/assets/img/project-cabin-interior.png",
+    image: cabinInterior.src,
     description: "Hospedaje sostenible construido con materiales locales y técnicas tradicionales.",
   },
   {
@@ -36,7 +43,7 @@ const projects = [
     category: "Bioclimático",
     location: "Nosara, Costa Rica",
     year: "2024",
-    image: "/src/assets/img/project-tropical-cabin.png",
+    image: tropicalCabin.src,
     description: "Arquitectura tropical que se integra armónicamente con su entorno natural.",
   },
   {
@@ -45,7 +52,7 @@ const projects = [
     category: "Residencial",
     location: "Tamarindo, Costa Rica",
     year: "2023",
-    image: "/src/assets/img/project-spiral-stairs.png",
+    image: spiralStairs.src,
     description: "Vivienda con escalera escultórica y diseño biofílico.",
   },
   {
@@ -54,7 +61,7 @@ const projects = [
     category: "Residencial",
     location: "Liberia, Costa Rica",
     year: "2024",
-    image: "/src/assets/img/project-white-house.png",
+    image: whiteHouse.src,
     description: "Proyecto mixto con espacios comerciales y residenciales de alta categoría.",
   },
 ];

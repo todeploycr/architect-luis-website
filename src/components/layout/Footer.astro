@@ -1,5 +1,7 @@
 ---
 // Footer.astro
+import logoLarq from '@/assets/img/logo-larq.png';
+
 const footerLinks = {
   servicios: [
     { name: "Arquitectura Residencial", href: "/services-page" },
@@ -30,7 +32,7 @@ const socialLinks = [
       <div>
         <div class="flex items-center gap-2.5 mb-6">
           <img
-            src="/src/assets/img/logo-larq.png"
+            src={logoLarq.src}
             alt="LARQ Arquitectura"
             class="h-10"
           />

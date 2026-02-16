@@ -1,12 +1,13 @@
 ---
 // Hero.astro
+import modernHouse from '@/assets/img/project-modern-house.png';
 ---
 
 <section id="inicio" class="relative min-h-screen flex items-center pt-20 md:pt-0">
   <!-- Background Image -->
   <div class="absolute inset-0">
     <img
-      src="/src/assets/img/project-modern-house.png"
+      src={modernHouse.src}
       alt="Arquitectura moderna LARQ"
       class="w-full h-full object-cover brightness-90"
     />

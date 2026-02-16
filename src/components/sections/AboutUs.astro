@@ -1,5 +1,7 @@
 ---
 // src/components/sections/AboutUs.astro
+import projectInterior from '@/assets/img/project-interior.png';
+
 const values = [
   {
     name: "Building2",
@@ -89,7 +91,7 @@ const values = [
       <div class="relative order-2 lg:order-1">
         <div class="relative overflow-hidden rounded-sm">
           <img
-            src="/src/assets/img/project-interior.png"
+            src={projectInterior.src}
             alt="Interior moderno LARQ Arquitectura"
             class="w-full h-125 lg:h-150 object-cover"
           />
@@ -125,9 +127,9 @@ const values = [
               {value.name === "Award" && (
                 <svg class="w-6 h-6 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                </svg>
-              )}
-            </div>
+                  </svg>
+                )}
+              </div>
             <div>
               <h4 class="font-semibold text-[#3D3635] mb-1 text-base">{value.title}</h4>
               <p class="text-sm text-[#3D3635]/60 leading-relaxed">{value.description}</p>
