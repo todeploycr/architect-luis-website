@@ -16,13 +16,6 @@ const services = [
     features: ["Oficinas corporativas", "Centros comerciales", "Hoteles y resorts"],
   },
   {
-    icon: "Compass",
-    title: "Tramitología y Planos",
-    description:
-      "Diseño de espacios públicos, planificación de desarrollos urbanísticos y estudios de ordenamiento territorial.",
-    features: ["Master plans", "Espacios públicos", "Estudios de impacto"],
-  },
-  {
     icon: "PenTool",
     title: "Diseño de Interiores",
     description:
@@ -33,15 +26,8 @@ const services = [
     icon: "TreePine",
     title: "Arquitectura Bioclimática",
     description:
-      "Diseño sostenible que aprovecha recursos naturales, minimiza impacto ambiental y promueve la eficiencia energética.",
-    features: ["Certificación LEED", "Eficiencia energética", "Materiales sostenibles"],
-  },
-  {
-    icon: "HardHat",
-    title: "Consultoría y Orientación",
-    description:
-      "Acompañamiento integral en todas las fases del proyecto, desde estudios de factibilidad hasta la supervisión de obra.",
-    features: ["Estudios de viabilidad", "Dirección de obra", "Gestión de permisos"],
+      "Creamos espacios que favorecen el confort térmico, la iluminación natural y la conexión con la naturaleza.",
+    features: ["Ventilación natural", "Iluminación estratégica", "Diseño centrado en el usuario"],
   },
 ];
 ---
@@ -50,7 +36,7 @@ const services = [
   <div class="container-corporate">
     <!-- Header -->
     <div class="text-center max-w-3xl mx-auto mb-16">
-      <span class="text-[#4C9141] font-medium tracking-[0.3em] text-xs uppercase mb-4 block">
+      <span class="text-[#E2C200] font-medium tracking-[0.3em] text-xs uppercase mb-4 block">
         NUESTROS SERVICIOS
       </span>
       <h2 class="text-3xl md:text-4xl lg:text-5xl font-serif font-normal text-[#3D3635] leading-tight mb-6">
@@ -70,35 +56,25 @@ const services = [
             <div class="shrink-0 w-full px-4">
               <div class="bg-white rounded-sm p-8 hover:shadow-xl transition-shadow duration-300 min-h-112.5 max-h-112.5 flex flex-col">
                 <!-- Icon -->
-                <div class="w-14 h-14 bg-[#B3D9B3]/40 rounded-sm flex items-center justify-center mb-6">
+                <div class="w-14 h-14 bg-transparent rounded-sm flex items-center justify-center mb-6">
                   {service.icon === "Home" && (
-                    <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-7 h-7 text-[#3D3635]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                     </svg>
                   )}
                   {service.icon === "Building" && (
-                    <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-7 h-7 text-[#3D3635]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                     </svg>
                   )}
-                  {service.icon === "Compass" && (
-                    <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                  )}
                   {service.icon === "PenTool" && (
-                    <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-7 h-7 text-[#3D3635]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
                     </svg>
                   )}
                   {service.icon === "TreePine" && (
-                    <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-7 h-7 text-[#3D3635]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-                    </svg>
-                  )}
-                  {service.icon === "HardHat" && (
-                    <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                     </svg>
                   )}
                 </div>
@@ -117,7 +93,7 @@ const services = [
                 <ul class="space-y-2 mt-auto">
                   {service.features.map((feature) => (
                     <li class="text-sm text-[#3D3635]/70 flex items-start gap-2">
-                      <span class="w-1.5 h-1.5 bg-[#4C9141] rounded-full mt-1.5 shrink-0" />
+                      <span class="w-1.5 h-1.5 bg-[#3D3635] rounded-full mt-1.5 shrink-0" />
                       {feature}
                     </li>
                   ))}
@@ -133,7 +109,7 @@ const services = [
         <!-- Previous Button -->
         <button
           id="prev-mobile"
-          class="w-10 h-10 bg-[#4C9141] text-white rounded-full flex items-center justify-center hover:bg-[#4C9141]/80 transition-colors"
+          class="w-10 h-10 bg-[#3D3635] text-white rounded-full flex items-center justify-center hover:bg-[#3D3635]/80 transition-colors"
           aria-label="Servicio anterior"
         >
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -155,7 +131,7 @@ const services = [
         <!-- Next Button -->
         <button
           id="next-mobile"
-          class="w-10 h-10 bg-[#4C9141] text-white rounded-full flex items-center justify-center hover:bg-[#4C9141]/80 transition-colors"
+          class="w-10 h-10 bg-[#3D3635] text-white rounded-full flex items-center justify-center hover:bg-[#3D3635]/80 transition-colors"
           aria-label="Siguiente servicio"
         >
           <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -170,35 +146,25 @@ const services = [
       {services.map((service) => (
         <div class="bg-white rounded-sm p-8 hover:shadow-xl transition-shadow duration-300">
           <!-- Icon -->
-          <div class="w-14 h-14 bg-[#B3D9B3]/40 rounded-sm flex items-center justify-center mb-6">
+          <div class="w-14 h-14 bg-transparent rounded-sm flex items-center justify-center mb-6">
             {service.icon === "Home" && (
-              <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-7 h-7 text-[#3D3635]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
               </svg>
             )}
             {service.icon === "Building" && (
-              <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-7 h-7 text-[#3D3635]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
               </svg>
             )}
-            {service.icon === "Compass" && (
-              <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-              </svg>
-            )}
             {service.icon === "PenTool" && (
-              <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-7 h-7 text-[#3D3635]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
               </svg>
             )}
             {service.icon === "TreePine" && (
-              <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-7 h-7 text-[#3D3635]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/>
-              </svg>
-            )}
-            {service.icon === "HardHat" && (
-              <svg class="w-7 h-7 text-[#4C9141]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
               </svg>
             )}
           </div>
@@ -217,7 +183,7 @@ const services = [
           <ul class="space-y-2 mb-6">
             {service.features.map((feature) => (
               <li class="text-sm text-[#3D3635]/70 flex items-start gap-2">
-                <span class="w-1.5 h-1.5 bg-[#4C9141] rounded-full mt-1.5 shrink-0" />
+                <span class="w-1.5 h-1.5 bg-[#3D3635] rounded-full mt-1.5 shrink-0" />
                 {feature}
               </li>
             ))}
@@ -247,10 +213,10 @@ const services = [
     // Update dots
     dots.forEach((dot, i) => {
       if (i === currentIndexMobile) {
-        dot.classList.add('bg-[#4C9141]', 'w-8');
+        dot.classList.add('bg-[#3D3635]', 'w-8');
         dot.classList.remove('bg-gray-300', 'w-2.5');
       } else {
-        dot.classList.remove('bg-[#4C9141]', 'w-8');
+        dot.classList.remove('bg-[#3D3635]', 'w-8');
         dot.classList.add('bg-gray-300', 'w-2.5');
       }
     });
