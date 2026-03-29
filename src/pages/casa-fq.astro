@@ -1,0 +1,199 @@
+---
+// src/pages/proyectos/casa-fq.astro
+import Layout from '@/layouts/MainLayout.astro';
+
+import casaFq1 from '@/assets/img/proyectos/casa-fq/casa-fq-1.png';
+import casaFq2 from '@/assets/img/proyectos/casa-fq/casa-fq-2.png';
+import casaFq3 from '@/assets/img/proyectos/casa-fq/casa-fq-3.png';
+import casaFq4 from '@/assets/img/proyectos/casa-fq/casa-fq-4.png';
+import casaFq5 from '@/assets/img/proyectos/casa-fq/casa-fq-5.png';
+import casaFq6 from '@/assets/img/proyectos/casa-fq/casa-fq-6.png';
+
+---
+
+<Layout title="Casa FQ — Proyectos">
+
+  <!-- ══════════════════════════════════════
+       HERO — imagen fullscreen
+  ══════════════════════════════════════ -->
+  <section class="relative w-full h-screen overflow-hidden">
+    <img
+      src={casaFq2.src}
+      alt="Casa FQ"
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[#3D3635]/30"></div>
+
+    <!-- back nav -->
+    <a
+      href="/proyectos"
+      class="absolute top-6 left-6 md:top-10 md:left-10 flex items-center gap-2
+             text-white/80 hover:text-white text-xs tracking-[0.2em] uppercase
+             transition-colors duration-300 group"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round"
+           class="transition-transform duration-300 group-hover:-translate-x-1">
+        <path d="M19 12H5M5 12l7 7M5 12l7-7"/>
+      </svg>
+      Proyectos
+    </a>
+
+    <!-- título anclado al fondo izquierdo -->
+    <div class="absolute bottom-10 left-6 md:bottom-14 md:left-12 lg:left-16">
+      <p class="text-[#E2C200] text-[10px] md:text-xs font-medium tracking-[0.35em] uppercase mb-3">
+        Residencial
+      </p>
+      <h1 class="font-serif font-normal text-white text-5xl md:text-7xl lg:text-8xl leading-none tracking-tight">
+        Casa FQ
+      </h1>
+      <p class="text-white/50 text-xs md:text-sm mt-3 tracking-widest uppercase">
+        Guanacaste, Costa Rica &nbsp;·&nbsp; 2024
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       TEXTO — descripción editorial
+  ══════════════════════════════════════ -->
+  <section class="bg-[#FAF7F2] py-20 md:py-28 lg:py-36">
+    <div class="max-w-5xl mx-auto px-6 md:px-12 lg:px-16">
+
+      <div class="flex items-center gap-4 mb-10 md:mb-14">
+        <span class="block w-8 h-px bg-[#E2C200]"></span>
+        <span class="text-[#E2C200] text-[10px] font-medium tracking-[0.4em] uppercase">
+          El Proyecto
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
+        <h2 class="font-serif font-normal text-[#3D3635] text-3xl md:text-4xl lg:text-5xl leading-snug">
+          Superposición de volúmenes, contraste de materiales.
+        </h2>
+        <div class="space-y-5 text-[#3D3635]/70 text-sm md:text-base leading-relaxed lg:pt-2">
+          <p>
+            FQ es una vivienda unifamiliar contemporánea definida por la superposición de
+            volúmenes y el contraste de materiales. La combinación de concreto, madera y
+            elementos verticales oscuros genera una fachada dinámica que aporta profundidad
+            y ritmo al diseño.
+          </p>
+          <p>
+            Los amplios ventanales fortalecen la relación entre interior y exterior,
+            permitiendo la entrada de luz natural y visuales hacia el entorno. El resultado
+            es una arquitectura moderna, cálida y funcional que busca equilibrio entre
+            estética, materialidad y habitabilidad.
+          </p>
+
+          <div class="pt-6 border-t border-[#3D3635]/10 grid grid-cols-2 gap-y-4 gap-x-8 text-xs">
+            <div>
+              <p class="text-[#3D3635]/40 tracking-widest uppercase mb-1">Ubicación</p>
+              <p class="text-[#3D3635] font-medium">Guanacaste, Costa Rica</p>
+            </div>
+            <div>
+              <p class="text-[#3D3635]/40 tracking-widest uppercase mb-1">Año</p>
+              <p class="text-[#3D3635] font-medium">2024</p>
+            </div>
+            <div>
+              <p class="text-[#3D3635]/40 tracking-widest uppercase mb-1">Tipología</p>
+              <p class="text-[#3D3635] font-medium">Residencial</p>
+            </div>
+            <div>
+              <p class="text-[#3D3635]/40 tracking-widest uppercase mb-1">Estado</p>
+              <p class="text-[#3D3635] font-medium">Construido</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       GALERÍA — grid limpio 5 imágenes
+       · Fila 1: full-width          (casaFq8)
+       · Fila 2: 1/2 | 1/2           (casaFq4 + casaFq5)
+       · Fila 3: 2/3 | 1/3           (casaFq6 + casaFq1)
+  ══════════════════════════════════════ -->
+  <section class="bg-[#FAF7F2] pb-24 md:pb-32 lg:pb-40">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-2 md:space-y-3">
+
+      <!-- Fila 1: panorámica full-width -->
+      <div class="overflow-hidden">
+        <img
+          src={casaFq3.src}
+          alt="Casa FQ — Vista panorámica"
+          class="w-full h-[50vw] md:h-[60vh] object-cover hover:scale-[1.02] transition-transform duration-700"
+          style="min-height: 220px;"
+        />
+      </div>
+
+      <!-- Fila 2: dos columnas exactamente iguales -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+        <div class="overflow-hidden">
+          <img
+            src={casaFq4.src}
+            alt="Casa FQ — Vista 4"
+            class="w-full h-[45vw] sm:h-72 md:h-80 lg:h-96 object-cover hover:scale-[1.03] transition-transform duration-700"
+          />
+        </div>
+        <div class="overflow-hidden">
+          <img
+            src={casaFq5.src}
+            alt="Casa FQ — Vista 5"
+            class="w-full h-[45vw] sm:h-72 md:h-80 lg:h-96 object-cover hover:scale-[1.03] transition-transform duration-700"
+          />
+        </div>
+      </div>
+
+      <!-- Fila 3: 2/3 izquierda + 1/3 derecha -->
+      <div class="grid grid-cols-1 sm:grid-cols-[2fr_1fr] gap-2 md:gap-3">
+        <div class="overflow-hidden">
+          <img
+            src={casaFq6.src}
+            alt="Casa FQ — Vista 6"
+            class="w-full h-[45vw] sm:h-64 md:h-72 object-cover hover:scale-[1.03] transition-transform duration-700"
+          />
+        </div>
+        <div class="overflow-hidden">
+          <img
+            src={casaFq1.src}
+            alt="Casa FQ — Vista 1"
+            class="w-full h-[45vw] sm:h-64 md:h-72 object-cover hover:scale-[1.03] transition-transform duration-700"
+          />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER CTA
+  ══════════════════════════════════════ -->
+  <section class="bg-[#3D3635] py-16 md:py-20">
+    <div class="max-w-5xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <p class="font-serif font-normal text-white/60 text-lg md:text-xl italic">
+        ¿Tienes un proyecto en mente?
+      </p>
+      <div class="flex items-center gap-6">
+        <a
+          href="/projects-page"
+          class="text-white/50 hover:text-white text-xs tracking-[0.25em] uppercase transition-colors duration-200"
+        >
+          Ver todos los proyectos
+        </a>
+        <a
+          href="/contact"
+          class="px-6 py-3 bg-[#E2C200] text-white text-xs tracking-[0.2em] uppercase font-medium
+                 hover:bg-[#c9ac00] transition-colors duration-200"
+        >
+          Conversemos
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

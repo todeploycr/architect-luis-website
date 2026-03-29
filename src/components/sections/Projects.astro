@@ -1,74 +1,64 @@
 ---
 // src/components/sections/Projects.astro
-import modernHouse from '@/assets/img/project-modern-house.png';
-import projectInterior from '@/assets/img/project-interior.png';
-import cabinInterior from '@/assets/img/project-cabin-interior.png';
-import tropicalCabin from '@/assets/img/project-tropical-cabin.png';
-import spiralStairs from '@/assets/img/project-spiral-stairs.png';
-import whiteHouse from '@/assets/img/project-white-house.png';
+import projectInterior from '@/assets/img/casa-canopia.png';
+import cabinInterior from '@/assets/img/casas-del-bosque.png';
+import tropicalCabin from '@/assets/img/casa-guadua.png';
 
-const categories = ["Todos", "Residencial", "Comercial", "Bioclimático"];
+const categories = ["Todos", "Residencial", "Bioclimático"];
 
+// height classes en Tailwind: diferencia de ~16–24px entre cards
+// h-72 = 288px | h-80 = 320px | h-[304px] = 304px
 const projects = [
   {
     id: 1,
     title: "Casa FQ",
-    category: "Residencial",
+    categories: ["Residencial"],
     location: "Guanacaste, Costa Rica",
     year: "2024",
-    image: modernHouse.src,
+    image: '/project-modern-house.png',
     description: "Residencia contemporánea con acabados de alta gama y diseño minimalista.",
+    href: "/casa-fq/",
+    heightClass: "h-80",          // 320px
   },
   {
     id: 2,
-    title: "Loft Urbano",
-    category: "Residencial",
-    location: "San José, Costa Rica",
-    year: "2023",
-    image: projectInterior.src,
-    description: "Interior moderno con integración de vegetación y espacios abiertos.",
+    title: "Casa Guadua",
+    categories: ["Residencial", "Bioclimático"],
+    location: "Costa Rica",
+    year: "2024",
+    image: tropicalCabin.src,
+    description: "Diseño residencial bioclimático con uso de guadua y materiales naturales.",
+    href: "/casa-guadua/",
+    heightClass: "h-80",          // 288px (-32px)
   },
   {
     id: 3,
-    title: "Tarantela Houses",
-    category: "Bioclimático",
-    location: "Nicoya, Costa Rica",
+    title: "Casas del Bosque",
+    categories: ["Residencial"],
+    location: "Costa Rica",
     year: "2023",
     image: cabinInterior.src,
-    description: "Hospedaje sostenible construido con materiales locales y técnicas tradicionales.",
+    description: "Conjunto residencial integrado al paisaje boscoso con arquitectura orgánica.",
+    href: "/casas-del-bosque/",
+    heightClass: "h-80",     // 304px (intermedia)
   },
   {
     id: 4,
-    title: "Cabaña Palmera",
-    category: "Bioclimático",
-    location: "Nosara, Costa Rica",
+    title: "Casa Canopia",
+    categories: ["Residencial", "Bioclimático"],
+    location: "Costa Rica",
     year: "2024",
-    image: tropicalCabin.src,
-    description: "Arquitectura tropical que se integra armónicamente con su entorno natural.",
-  },
-  {
-    id: 5,
-    title: "Casa Franz",
-    category: "Residencial",
-    location: "Tamarindo, Costa Rica",
-    year: "2023",
-    image: spiralStairs.src,
-    description: "Vivienda con escalera escultórica y diseño biofílico.",
-  },
-  {
-    id: 6,
-    title: "Villa Tropical",
-    category: "Residencial",
-    location: "Liberia, Costa Rica",
-    year: "2024",
-    image: whiteHouse.src,
-    description: "Proyecto mixto con espacios comerciales y residenciales de alta categoría.",
+    image: projectInterior.src,
+    description: "Arquitectura bioclimática que convive con el dosel tropical.",
+    href: "/casa-canopia/",
+    heightClass: "h-80",          // 320px (igual a la primera)
   },
 ];
 ---
 
 <section class="py-12 md:py-16 lg:py-20 bg-[#E3D9C6]/20">
   <div class="container-corporate px-4 md:px-6">
+
     <!-- Header -->
     <div class="text-center max-w-3xl mx-auto mb-8 md:mb-10 lg:mb-12">
       <span class="text-[#E2C200] font-medium tracking-[0.3em] text-xs uppercase mb-3 md:mb-4 block">
@@ -78,7 +68,7 @@ const projects = [
         Proyectos que definen nuestra trayectoria
       </h2>
       <p class="text-[#3D3635]/60 leading-relaxed text-sm md:text-base px-4">
-        Cada proyecto es una oportunidad para crear espacios únicos que trascienden 
+        Cada proyecto es una oportunidad para crear espacios únicos que trascienden
         el tiempo y mejoran la vida de quienes los habitan.
       </p>
     </div>
@@ -100,73 +90,95 @@ const projects = [
     </div>
 
     <!-- Projects Grid -->
-    <div class="projects-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 items-end">
       {projects.map((project) => (
-        <div
-          class="project-item group cursor-pointer transition-opacity duration-300"
-          data-category={project.category}
+        <a
+          href={project.href}
+          class={`project-item group relative overflow-hidden rounded-sm cursor-pointer block
+            shadow-sm hover:shadow-lg transition-shadow duration-400
+            ${project.heightClass}
+          `}
+          data-categories={project.categories.join(",")}
         >
-          <div class="relative overflow-hidden rounded-sm h-75 sm:h-87,5 md:h-95 lg:h-100 mb-3 md:mb-4 shadow-md hover:shadow-xl transition-shadow duration-300">
-            <img
-              src={project.image}
-              alt={project.title}
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <!-- Dark gradient overlay -->
-            <div class="absolute inset-0 bg-linear-to-t from-[#3D3635]/90 via-[#3D3635]/40 to-transparent" />
-            
-            <!-- Content -->
-            <div class="absolute inset-0 flex flex-col justify-end p-4 md:p-5 lg:p-6 z-10">
-              <span class="text-[#E2C200]/90 text-xs md:text-sm font-medium mb-1.5 md:mb-2 uppercase tracking-wide">
-                {project.category}
-              </span>
-              <h3 class="text-xl md:text-2xl font-serif font-normal text-white mb-1">
-                {project.title}
-              </h3>
-              <p class="text-white/80 text-xs md:text-sm">
-                {project.location} · {project.year}
-              </p>
-            </div>
+          <!-- Image -->
+          <img
+            src={project.image}
+            alt={project.title}
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+          />
+
+          <!-- Gradient overlay -->
+          <div class="absolute inset-0 bg-linear-to-t from-[#3D3635]/85 via-[#3D3635]/15 to-transparent opacity-75 group-hover:opacity-100 transition-opacity duration-300" />
+
+          <!-- Arrow icon -->
+          <div class="absolute top-3 right-3 w-7 h-7 rounded-full bg-[#E2C200] flex items-center justify-center opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-20">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 17L17 7M17 7H7M17 7v10"/>
+            </svg>
           </div>
-        </div>
+
+          <!-- Content -->
+          <div class="absolute inset-0 flex flex-col justify-end p-4 z-10">
+            <div class="flex flex-wrap gap-1.5 mb-1.5">
+              {project.categories.map((cat) => (
+                <span class="text-[#E2C200] text-[10px] font-medium uppercase tracking-widest">
+                  {cat}
+                </span>
+              ))}
+            </div>
+            <h3 class="font-serif font-normal text-white text-base md:text-lg leading-tight mb-0.5">
+              {project.title}
+            </h3>
+            <p class="text-white/55 text-[11px]">
+              {project.location} · {project.year}
+            </p>
+            <p class="text-white/80 text-xs leading-relaxed max-h-0 overflow-hidden group-hover:max-h-14 transition-all duration-500 ease-in-out mt-0 group-hover:mt-2">
+              {project.description}
+            </p>
+          </div>
+        </a>
       ))}
     </div>
+
   </div>
 </section>
 
 <script>
   function initProjectFilter() {
     const categoryButtons = document.querySelectorAll('.category-btn');
-    const projectItems = document.querySelectorAll('.project-item');
+    const projectItems = document.querySelectorAll<HTMLElement>('.project-item');
 
     if (!categoryButtons.length || !projectItems.length) return;
+
+    projectItems.forEach((item) => {
+      item.style.transition = 'opacity 300ms ease, transform 300ms ease';
+    });
 
     categoryButtons.forEach((btn) => {
       btn.addEventListener('click', () => {
         const category = btn.getAttribute('data-category') || 'Todos';
-        
-        // Update active state
+
         categoryButtons.forEach((b) => {
-          b.classList.remove('bg-[#E2C200]/90', 'text-white');
+          b.classList.remove('bg-[#E2C200]', 'text-white');
           b.classList.add('bg-[#E3D9C6]/50', 'text-[#3D3635]', 'hover:bg-[#E3D9C6]');
         });
         btn.classList.remove('bg-[#E3D9C6]/50', 'text-[#3D3635]', 'hover:bg-[#E3D9C6]');
-        btn.classList.add('bg-[#E2C200]/90', 'text-white');
-        
-        // Filter projects with fade animation
+        btn.classList.add('bg-[#E2C200]', 'text-white');
+
         projectItems.forEach((item) => {
-          const itemCategory = item.getAttribute('data-category');
-          const htmlItem = item as HTMLElement;
-          
-          if (category === 'Todos' || itemCategory === category) {
-            htmlItem.style.display = 'block';
-            // Trigger reflow for animation
-            void htmlItem.offsetWidth;
-            htmlItem.style.opacity = '1';
+          const itemCategories = (item.getAttribute('data-categories') || '').split(',');
+          const isVisible = category === 'Todos' || itemCategories.includes(category);
+
+          if (isVisible) {
+            item.style.display = '';
+            void item.offsetWidth;
+            item.style.opacity = '1';
+            item.style.transform = 'scale(1)';
           } else {
-            htmlItem.style.opacity = '0';
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.98)';
             setTimeout(() => {
-              htmlItem.style.display = 'none';
+              if (item.style.opacity === '0') item.style.display = 'none';
             }, 300);
           }
         });
@@ -174,13 +186,11 @@ const projects = [
     });
   }
 
-  // Initialize on page load
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initProjectFilter);
   } else {
     initProjectFilter();
   }
 
-  // Re-initialize on navigation (for Astro view transitions)
   document.addEventListener('astro:page-load', initProjectFilter);
 </script>

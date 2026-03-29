@@ -1,0 +1,179 @@
+---
+// src/pages/proyectos/casa-canopia.astro
+import Layout from '@/layouts/MainLayout.astro';
+
+import canopia1 from '@/assets/img/proyectos/casa-canopia/canopia-1.jpg';
+import canopia2 from '@/assets/img/proyectos/casa-canopia/canopia-2.jpg';
+import canopia3 from '@/assets/img/proyectos/casa-canopia/canopia-3.jpg';
+---
+
+<Layout title="Casa Guadua — Proyectos">
+
+  <!-- ══════════════════════════════════════
+       HERO — imagen fullscreen
+  ══════════════════════════════════════ -->
+  <section class="relative w-full h-screen overflow-hidden">
+    <img
+      src={canopia1.src}
+      alt="Casa Canopia"
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-[#3D3635]/25"></div>
+
+    <!-- back nav -->
+    <a
+      href="/proyectos"
+      class="absolute top-6 left-6 md:top-10 md:left-10 flex items-center gap-2
+             text-white/80 hover:text-white text-xs tracking-[0.2em] uppercase
+             transition-colors duration-300 group"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round"
+           class="transition-transform duration-300 group-hover:-translate-x-1">
+        <path d="M19 12H5M5 12l7 7M5 12l7-7"/>
+      </svg>
+      Proyectos
+    </a>
+
+    <!-- título anclado al fondo izquierdo -->
+    <div class="absolute bottom-10 left-6 md:bottom-14 md:left-12 lg:left-16">
+      <p class="text-[#E2C200] text-[10px] md:text-xs font-medium tracking-[0.35em] uppercase mb-3">
+        Residencial &nbsp;·&nbsp; Bioclimático
+      </p>
+      <h1 class="font-serif font-normal text-white text-5xl md:text-7xl lg:text-8xl leading-none tracking-tight">
+        Casa Guadua
+      </h1>
+      <p class="text-white/50 text-xs md:text-sm mt-3 tracking-widest uppercase">
+        Costa Rica &nbsp;·&nbsp; 2024
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       TEXTO — descripción editorial
+  ══════════════════════════════════════ -->
+  <section class="bg-[#FAF7F2] py-20 md:py-28 lg:py-36">
+    <div class="max-w-5xl mx-auto px-6 md:px-12 lg:px-16">
+
+      <div class="flex items-center gap-4 mb-10 md:mb-14">
+        <span class="block w-8 h-px bg-[#E2C200]"></span>
+        <span class="text-[#E2C200] text-[10px] font-medium tracking-[0.4em] uppercase">
+          El Proyecto
+        </span>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-start">
+        <h2 class="font-serif font-normal text-[#3D3635] text-3xl md:text-4xl lg:text-5xl leading-snug">
+          Estructura ligera, integración natural con el entorno.
+        </h2>
+        <div class="space-y-5 text-[#3D3635]/70 text-sm md:text-base leading-relaxed lg:pt-2">
+          <p>
+            Casa Guadua es un apartaestudio tropical ligero y sostenible que se integra
+            de manera armónica con su entorno. Construido principalmente en bambú, el
+            proyecto explora sistemas estructurales eficientes que aprovechan la flexibilidad
+            y resistencia natural del material, generando una estética orgánica y contemporánea.
+          </p>
+          <p>
+            La composición se define por planos inclinados y estructuras expuestas que permiten
+            una ventilación constante y una relación directa con el exterior. Los aleros amplios
+            y la elevación del volumen protegen el espacio del clima, mientras que la vegetación
+            circundante se incorpora como parte esencial de la experiencia.
+          </p>
+
+          <div class="pt-6 border-t border-[#3D3635]/10 grid grid-cols-2 gap-y-4 gap-x-8 text-xs">
+            <div>
+              <p class="text-[#3D3635]/40 tracking-widest uppercase mb-1">Ubicación</p>
+              <p class="text-[#3D3635] font-medium">Costa Rica</p>
+            </div>
+            <div>
+              <p class="text-[#3D3635]/40 tracking-widest uppercase mb-1">Año</p>
+              <p class="text-[#3D3635] font-medium">2024</p>
+            </div>
+            <div>
+              <p class="text-[#3D3635]/40 tracking-widest uppercase mb-1">Tipología</p>
+              <p class="text-[#3D3635] font-medium">Residencial · Bioclimático</p>
+            </div>
+            <div>
+              <p class="text-[#3D3635]/40 tracking-widest uppercase mb-1">Material</p>
+              <p class="text-[#3D3635] font-medium">Bambú / Guadua</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       GALERÍA — grid limpio
+       · Fila 1 (arriba): 1/2 | 1/2  → img 2 + img 3, misma altura
+       · Fila 2 (abajo):  full-width  → img 1 repetida como cierre panorámico
+         (solo tenemos 3 imágenes; canopia-1 fue el hero,
+          así que la reutilizamos aquí con object-position diferente
+          para que se vea distinta)
+  ══════════════════════════════════════ -->
+  <section class="bg-[#FAF7F2] pb-24 md:pb-32 lg:pb-40">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 space-y-2 md:space-y-3">
+
+      <!-- Fila 1: dos columnas exactamente iguales -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
+        <div class="overflow-hidden">
+          <img
+            src={canopia2.src}
+            alt="Casa Canopia — Vista 2"
+            class="w-full h-[50vw] sm:h-[50vh] md:h-[55vh] object-cover hover:scale-[1.02] transition-transform duration-700"
+          />
+        </div>
+        <div class="overflow-hidden">
+          <img
+            src={canopia3.src}
+            alt="Casa Canopia — Vista 3"
+            class="w-full h-[50vw] sm:h-[50vh] md:h-[55vh] object-cover hover:scale-[1.02] transition-transform duration-700"
+          />
+        </div>
+      </div>
+
+      <!-- Fila 2: imagen full-width de cierre -->
+      <div class="overflow-hidden">
+        <img
+          src={canopia1.src}
+          alt="Casa Canopia — Vista panorámica"
+          class="w-full h-[45vw] md:h-[55vh] object-cover object-bottom hover:scale-[1.02] transition-transform duration-700"
+          style="min-height: 200px;"
+        />
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════
+       FOOTER CTA
+  ══════════════════════════════════════ -->
+  <section class="bg-[#3D3635] py-16 md:py-20">
+    <div class="max-w-5xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <p class="font-serif font-normal text-white/60 text-lg md:text-xl italic">
+        ¿Tienes un proyecto en mente?
+      </p>
+      <div class="flex items-center gap-6">
+        <a
+          href="/projects-page"
+          class="text-white/50 hover:text-white text-xs tracking-[0.25em] uppercase transition-colors duration-200"
+        >
+          Ver todos los proyectos
+        </a>
+        <a
+          href="/contact"
+          class="px-6 py-3 bg-[#E2C200] text-white text-xs tracking-[0.2em] uppercase font-medium
+                 hover:bg-[#c9ac00] transition-colors duration-200"
+        >
+          Conversemos
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
