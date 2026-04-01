@@ -12,17 +12,16 @@ interface Props {
 }
 
 const { 
-  title = "LARQ Arquitectura - Diseño y Construcción de Espacios Únicos", 
-  description = "Estudio de arquitectura en Costa Rica con más de 6 años de experiencia. Diseño residencial, comercial y bioclimático. Proyectos sostenibles que integran funcionalidad, estética y armonía con el entorno.",
-  image = "/og-image.jpg", // Deberás crear esta imagen
+  title = "LARQ Arquitectura — Diseño y Construcción de Espacios Únicos", 
+  description = "Estudio de arquitectura en Costa Rica fundado en 2020 por Linda y Luis. Diseño residencial, bioclimático y biofílico en Heredia y Guanacaste. Proyectos que integran funcionalidad, estética y armonía con el entorno.",
+  image = "/og-image.jpg",
   type = "website"
 } = Astro.props;
 
-const siteUrl = "https://larqarquitectura.com"; // Cambiar por tu dominio real
+const siteUrl = "https://larqcr.com";
 const siteTitle = title.includes("LARQ") ? title : `${title} | LARQ Arquitectura`;
 const siteImageUrl = image.startsWith('http') ? image : `${siteUrl}${image}`;
 
-// URLs dinámicas para canonical y OG
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
 const currentUrl = canonical;
 ---
@@ -42,8 +41,8 @@ const currentUrl = canonical;
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href={canonical} />
     <meta name="geo.region" content="CR" />
-    <meta name="geo.placename" content="Costa Rica" />
-    <meta name="keywords" content="arquitectura costa rica, diseño arquitectónico, arquitectura residencial, arquitectura comercial, arquitectura sostenible, arquitectura bioclimática, estudio arquitectura, diseño casas, construcción costa rica" />
+    <meta name="geo.placename" content="Guanacaste, Costa Rica" />
+    <meta name="keywords" content="arquitectura costa rica, diseño arquitectónico, arquitectura residencial, arquitectura comercial, arquitectura sostenible, arquitectura bioclimática, arquitectura biofílica, estudio arquitectura guanacaste, diseño casas heredia, construcción costa rica" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={type} />
@@ -63,7 +62,7 @@ const currentUrl = canonical;
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={siteImageUrl} />
-    <meta name="twitter:image:alt" content="LARQ Arquitectura - Estudio de arquitectura" />
+    <meta name="twitter:image:alt" content="LARQ Arquitectura - Estudio de arquitectura en Costa Rica" />
     
     <!-- Datos estructurados JSON-LD para Negocio Local -->
     <script type="application/ld+json" set:html={JSON.stringify({
@@ -71,26 +70,22 @@ const currentUrl = canonical;
       "@type": ["ProfessionalService", "Architect", "LocalBusiness"],
       "name": "LARQ Arquitectura",
       "image": siteImageUrl,
-      "logo": siteImageUrl,
+      "logo": `${siteUrl}/favicon.svg`,
       "url": siteUrl,
-      "telephone": "+506-8897-2353", // Cambiar por teléfono real
-      "email": "info@larqarquitectura.com", // Cambiar por email real
+      "telephone": "+506-8897-2353",
+      "email": "larq@gmail.com",
       "address": {
         "@type": "PostalAddress",
-        "addressLocality": "San José", // Cambiar según ubicación
-        "addressRegion": "San José",
+        "addressLocality": "Guanacaste",
+        "addressRegion": "Guanacaste",
         "addressCountry": "CR"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": "9.9281", // Coordenadas de San José, ajustar según ubicación real
-        "longitude": "-84.0907"
+        "latitude": "10.4354",
+        "longitude": "-85.6592"
       },
       "areaServed": [
-        {
-          "@type": "City",
-          "name": "San José"
-        },
         {
           "@type": "City",
           "name": "Heredia"
@@ -100,22 +95,26 @@ const currentUrl = canonical;
           "name": "Guanacaste"
         },
         {
+          "@type": "City",
+          "name": "Nosara"
+        },
+        {
           "@type": "Country",
           "name": "Costa Rica"
         }
       ],
       "description": description,
       "slogan": "Diseñamos espacios que transforman la forma de vivir",
-      "foundingDate": "2018", // Ajustar según año real de fundación
+      "foundingDate": "2020",
       "knowsAbout": [
         "Arquitectura residencial",
         "Arquitectura comercial",
         "Diseño de interiores",
         "Arquitectura bioclimática",
-        "Arquitectura sostenible",
-        "Planificación urbana",
+        "Arquitectura biofílica",
         "Supervisión de obra",
-        "Diseño arquitectónico"
+        "Diseño arquitectónico",
+        "Construcción sostenible"
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -149,6 +148,14 @@ const currentUrl = canonical;
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
+              "name": "Arquitectura Biofílica",
+              "description": "Espacios que integran la naturaleza al diseño, promoviendo el bienestar y la conexión con el entorno natural"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
               "name": "Diseño de Interiores",
               "description": "Creación de ambientes interiores que optimizan la experiencia del usuario, integrando mobiliario, iluminación y acabados"
             }
@@ -157,16 +164,8 @@ const currentUrl = canonical;
             "@type": "Offer",
             "itemOffered": {
               "@type": "Service",
-              "name": "Planificación Urbana",
-              "description": "Diseño de espacios públicos, planificación de desarrollos urbanísticos y estudios de ordenamiento territorial"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
               "name": "Consultoría y Supervisión",
-              "description": "Acompañamiento integral en todas las fases del proyecto, desde estudios de factibilidad hasta la supervisión de obra"
+              "description": "Acompañamiento integral en todas las fases del proyecto, desde la conceptualización hasta la supervisión de obra"
             }
           }
         ]
@@ -180,9 +179,7 @@ const currentUrl = canonical;
         }
       ],
       "sameAs": [
-        "https://www.instagram.com/larqarquitectura", // Ajustar según redes sociales reales
-        "https://www.facebook.com/larqarquitectura",
-        "https://wa.me/506XXXXXXXX" // Ajustar número de WhatsApp
+        "https://wa.me/50688972353"
       ],
       "paymentAccepted": "Transferencia bancaria, SINPE Móvil, Efectivo, Tarjeta",
       "currenciesAccepted": "CRC, USD"
@@ -195,24 +192,23 @@ const currentUrl = canonical;
       "name": "LARQ Arquitectura",
       "alternateName": "LARQ",
       "url": siteUrl,
-      "logo": siteImageUrl,
-      "description": "Estudio de arquitectura especializado en diseño residencial, comercial y sostenible en Costa Rica",
-      "foundingDate": "2018", // Ajustar
-      "email": "info@larqarquitectura.com", // Ajustar
-      "telephone": "+506-XXXX-XXXX", // Ajustar
+      "logo": `${siteUrl}/favicon.svg`,
+      "description": "Estudio de arquitectura fundado en 2020 por Linda y Luis, especializado en diseño residencial, bioclimático y biofílico en Costa Rica",
+      "foundingDate": "2020",
+      "email": "larq@gmail.com",
+      "telephone": "+506-8897-2353",
       "address": {
         "@type": "PostalAddress",
         "addressCountry": "CR",
-        "addressRegion": "San José",
-        "addressLocality": "San José"
+        "addressRegion": "Guanacaste",
+        "addressLocality": "Guanacaste"
       },
       "sameAs": [
-        "https://www.instagram.com/larqarquitectura",
-        "https://www.facebook.com/larqarquitectura"
+        "https://wa.me/50688972353"
       ]
     })} />
 
-    <!-- Datos estructurados para Breadcrumb (se puede personalizar por página) -->
+    <!-- Datos estructurados para Breadcrumb -->
     <script type="application/ld+json" set:html={JSON.stringify({
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -232,10 +228,10 @@ const currentUrl = canonical;
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     
     <!-- Theme & PWA -->
-    <meta name="theme-color" content="#4C9141" />
+    <meta name="theme-color" content="#E2C200" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Fonts - Preconnect para mejor performance -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -251,9 +247,7 @@ const currentUrl = canonical;
 
     <Footer />
 
-    <!-- Scroll to top functionality -->
     <script>
-      // Smooth scroll for anchor links
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
           const href = this.getAttribute('href');
