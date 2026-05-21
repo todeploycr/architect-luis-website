@@ -1,6 +1,7 @@
 ---
 // Footer.astro
 import logoLarq from '@/assets/img/logo-larq.png';
+import toDeploy from "@/assets/img/todeploy-logo.png";
 
 const footerLinks = {
   servicios: [
@@ -125,12 +126,30 @@ const socialLinks = [
     </div>
   </div>
 
-  <!-- Bottom Bar -->
-  <div class="border-t border-white/10">
-    <div class="container-corporate py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-      <p class="text-sm text-white/50 text-center md:text-left">
-        © 2024 LARQ Arquitectura. Todos los derechos reservados.
-      </p>
+<!-- Bottom Bar -->
+<div class="border-t border-white/10">
+  <div class="container-corporate py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-white/50 text-center md:text-left">
+      © 2024 LARQ Arquitectura. Todos los derechos reservados.
+    </p>
+
+    <div class="flex items-center gap-4">
+      <!-- toDeploy credit -->
+      <a
+        href="https://todeploycr.netlify.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 text-white/50 hover:opacity-80 transition-opacity text-sm"
+      >
+        <img
+          src={toDeploy.src}
+          alt="toDeploy Software & Automation"
+          class="h-5 w-auto"
+        />
+        <span>toDeploy Software & Automation</span>
+      </a>
+
+      <!-- Scroll to top -->
       <button
         id="scroll-to-top"
         class="w-10 h-10 bg-[#E2C200] rounded-sm flex items-center justify-center hover:bg-[#E2C200]/90 transition-all duration-300 hover:scale-110 active:scale-90"
@@ -142,6 +161,7 @@ const socialLinks = [
       </button>
     </div>
   </div>
+</div>
 </footer>
 
 <script>
