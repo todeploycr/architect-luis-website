@@ -1,14 +1,23 @@
 ---
+import ogImage from "@/assets/img/proyectos/casa-canopia/canopia-5.png";
 import MainLayout from "@/layouts/MainLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
+import { Image } from "astro:assets";
+import modernHouse from '@/assets/img/project-modern-house.png';
 import whiteHouse from '@/assets/img/project-white-house.png';
 import tropicalCabin from '@/assets/img/casa-guadua.png';
+
+const featuredProjects = [
+  { href: "/casa-fq/", image: modernHouse, alt: "Casa FQ, residencia contemporánea de LARQ", title: "Casa FQ" },
+  { href: "/casa-canopia/", image: whiteHouse, alt: "Casa Canopia, vivienda bioclimática de LARQ", title: "Casa Canopia" },
+  { href: "/casa-guadua/", image: tropicalCabin, alt: "Casa Guadua, apartaestudio en bambú de LARQ", title: "Casa Guadua" },
+];
 ---
 
 <MainLayout
   title="LARQ Arquitectura — Diseño y Construcción de Espacios Únicos en Costa Rica"
   description="Estudio de arquitectura en Costa Rica fundado en 2020. Diseño residencial, comercial y bioclimático en Heredia y Guanacaste. Proyectos que integran funcionalidad, estética y armonía con el entorno."
-  image="https://larqcr.com/_astro/casa-gadua-5.CO_dICSg.png"
+  image={ogImage}
   type="website"
 >
   <Hero />
@@ -114,58 +123,25 @@ import tropicalCabin from '@/assets/img/casa-guadua.png';
       </div>
 
       <div class="grid md:grid-cols-3 gap-8 mb-12">
-        <!-- Project 1 -->
-         <a href="/casa-fq/" class="group cursor-pointer block">
-        <div class="group cursor-pointer">
-          <div class="relative overflow-hidden rounded-sm mb-4 h-75">
-            <img
-               src="/project-modern-house.png"
-               alt="Arquitectura moderna LARQ"
-               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-/>
-            <div class="absolute inset-0 bg-linear-to-t from-[#3D3635]/80 to-transparent" />
-            <div class="absolute bottom-4 left-4 text-white">
-              <span class="text-[#E2C200] text-sm font-medium uppercase tracking-wide">Residencial</span>
-              <h3 class="text-lg font-serif">Casa FQ</h3>
+        {featuredProjects.map((project) => (
+          <a href={project.href} class="group cursor-pointer block">
+            <div class="relative overflow-hidden rounded-sm mb-4 h-75">
+              <Image
+                src={project.image}
+                alt={project.alt}
+                widths={[480, 800, 1200]}
+                sizes="(min-width: 768px) 33vw, 100vw"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-linear-to-t from-[#3D3635]/80 to-transparent"></div>
+              <div class="absolute bottom-4 left-4 text-white">
+                <span class="text-[#E2C200] text-sm font-medium uppercase tracking-wide">Residencial</span>
+                <h3 class="text-lg font-serif">{project.title}</h3>
+              </div>
             </div>
-          </div>
-        </div>
-      </a>
-        <!-- Project 2 -->
-         <a href="/casa-canopia/" class="group cursor-pointer block">
-        <div class="group cursor-pointer">
-          <div class="relative overflow-hidden rounded-sm mb-4 h-75">
-            <img
-              src={whiteHouse.src}
-              alt="Proyecto destacado"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div class="absolute inset-0 bg-linear-to-t from-[#3D3635]/80 to-transparent" />
-            <div class="absolute bottom-4 left-4 text-white">
-              <span class="text-[#E2C200] text-sm font-medium uppercase tracking-wide">RESIDENCIAL</span>
-              <h3 class="text-lg font-serif">Casa Canopia</h3>
-            </div>
-          </div>
-        </div>
-      </a>
-        <!-- Project 3 -->
-         <a href="/casa-guadua/" class="group cursor-pointer block">
-        <div class="group cursor-pointer">
-          <div class="relative overflow-hidden rounded-sm mb-4 h-75">
-            <img
-              src={tropicalCabin.src}
-              alt="Proyecto destacado"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            <div class="absolute inset-0 bg-linear-to-t from-[#3D3635]/80 to-transparent" />
-            <div class="absolute bottom-4 left-4 text-[white]">
-              <span class="text-[#E2C200] text-sm font-medium uppercase tracking-wide">Residencial</span>
-              <h3 class="text-lg font-serif">Casa Guadua</h3>
-            </div>
-          </div>
-        </div>
+          </a>
+        ))}
       </div>
-    </a>
 
       <div class="text-center">
         <a 

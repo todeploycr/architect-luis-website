@@ -1,7 +1,9 @@
 ---
+import { Image } from "astro:assets";
 // Footer.astro
 import logoLarq from '@/assets/img/logo-larq.png';
 import toDeploy from "@/assets/img/todeploy-logo.png";
+import { PHONE_DISPLAY, EMAIL, INSTAGRAM_URL, whatsappLink } from "@/config/site";
 
 const footerLinks = {
   servicios: [
@@ -14,14 +16,13 @@ const footerLinks = {
   empresa: [
     { name: "Sobre Nosotros", href: "/about" },
     { name: "Proyectos", href: "/projects-page" },
-    { name: "Testimonios", href: "/about#testimonios" },
     { name: "Trabaje con Nosotros", href: "/contact" },
   ],
 };
 
 const socialLinks = [
-  { name: "Instagram", href: "https://www.instagram.com/larq_cr/", label: "Instagram" },
-  { name: "WhatsApp", href: "https://wa.me/50688972353?text=Hola%20,%20me%20gustaría%20consultar%20sobre%20sus%20servicios", label: "WhatsApp" },
+  { name: "Instagram", href: INSTAGRAM_URL, label: "Instagram" },
+  { name: "WhatsApp", href: whatsappLink("Hola, me gustaría consultar sobre sus servicios"), label: "WhatsApp" },
 ];
 ---
 
@@ -38,10 +39,11 @@ const socialLinks = [
       <!-- Brand (siempre visible) -->
       <div>
         <div class="flex items-center gap-2.5 mb-6">
-          <img
-            src={logoLarq.src}
+          <Image
+            src={logoLarq}
+            height={80}
             alt="LARQ Arquitectura"
-            class="h-10"
+            class="h-10 w-auto"
           />
           <div class="flex flex-col leading-none justify-center">
             <span class="text-white text-sm md:text-base font-bold tracking-wide">LARQ</span>
@@ -117,9 +119,9 @@ const socialLinks = [
         <h4 class="font-serif text-xl mb-6">Contacto</h4>
         <ul class="space-y-2 text-sm text-white/70">
           <li>Costa Rica</li>
-          <li>+506 8897 2353</li>
+          <li>{PHONE_DISPLAY}</li>
           <li>+506 6061 2494</li>
-          <li>larq.cr@gmail.com</li>
+          <li>{EMAIL}</li>
         </ul>
       </div>
 
@@ -141,8 +143,9 @@ const socialLinks = [
         rel="noopener noreferrer"
         class="flex items-center gap-2 text-white/50 hover:opacity-80 transition-opacity text-sm"
       >
-        <img
-          src={toDeploy.src}
+        <Image
+          src={toDeploy}
+          height={40}
           alt="toDeploy Software & Automation"
           class="h-5 w-auto"
         />
