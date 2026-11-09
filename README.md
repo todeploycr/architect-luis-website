@@ -1,43 +1,40 @@
-# Astro Starter Kit: Minimal
+# LARQ Arquitectura
+
+Sitio estático hecho con [Astro](https://astro.build) + Tailwind CSS. Publicado en https://larqcr.com
+
+## Desarrollo
 
 ```sh
-npm create astro@latest -- --template minimal
+npm ci          # instalar dependencias
+npm run dev     # servidor local en http://localhost:4321
+npm run build   # compilar a dist/
+npm run preview # ver el build localmente
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Los datos de contacto (teléfono, correo, WhatsApp, Instagram) están centralizados en `src/config/site.ts`.
 
-## 🚀 Project Structure
+## Despliegue
 
-Inside of your Astro project, you'll see the following folders and files:
+**Automático:** cada merge a `main` compila el sitio y lo publica en Hostinger
+(workflow `.github/workflows/deploy.yml`). También se puede lanzar a mano desde
+*Actions → Deploy a Hostinger → Run workflow*.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+El workflow:
+1. Compila el sitio y verifica que el build sea válido.
+2. Guarda un respaldo de la versión actual en `~/backups/` del servidor (conserva los últimos 5).
+3. Sincroniza `dist/` con `public_html` usando `rsync`.
+4. Comprueba que las páginas principales respondan 200.
+
+Archivos que **solo existen en el servidor** y el despliegue nunca toca:
+`send-email.php`, `PHPMailer/`, `robots.txt`, `n8n/`, `n8na/`, `.htaccess`.
+
+Requiere el secret `HOSTINGER_SSH_KEY` en *Settings → Secrets and variables → Actions*,
+con una llave autorizada en hPanel → Acceso SSH.
+
+**Restaurar un respaldo:**
+
+```sh
+ssh -p 65002 u304762327@46.202.183.24
+ls ~/backups/                                   # elegir el respaldo
+cd ~/domains/larqcr.com && tar -xzf ~/backups/<archivo>.tar.gz
 ```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
