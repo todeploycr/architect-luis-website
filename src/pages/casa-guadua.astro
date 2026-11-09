@@ -1,23 +1,25 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '@/layouts/MainLayout.astro';
+import Lightbox from '@/components/Lightbox.astro';
 
-import canopia1 from 'public/canopia-1.jpg';
-import canopia2 from '@/assets/img/proyectos/casa-canopia/canopia-2.jpg';
-import canopia3 from '@/assets/img/proyectos/casa-canopia/canopia-3.jpg';
+import guadua1 from '@/assets/img/proyectos/casa-guadua/guadua-1.jpg';
+import guadua2 from '@/assets/img/proyectos/casa-guadua/guadua-2.jpg';
+import guadua3 from '@/assets/img/proyectos/casa-guadua/guadua-3.jpg';
 ---
 
 <Layout
   title="Casa Guadua — Apartaestudio Tropical en Bambú | LARQ Arquitectura"
   description="Casa Guadua es un apartaestudio tropical ligero y sostenible construido en bambú en Costa Rica. Diseño bioclimático con planos inclinados, estructuras expuestas y conexión total con el entorno natural. 2024."
-  image="https://larqcr.com/_astro/canopia-1.BcXvaUt6.jpg"
+  image={guadua1}
   type="article"
 >
 
   <!-- HERO -->
   <section class="relative w-full h-screen overflow-hidden">
-    <img src={canopia1.src} alt="Casa Canopia" class="w-full h-full object-cover" />
+    <Image src={guadua1} widths={[768, 1280, 1920, 2560]} sizes="100vw" loading="eager" fetchpriority="high" alt="Casa Guadua" class="w-full h-full object-cover" />
     <div class="absolute inset-0 bg-[#3D3635]/25"></div>
-    <a href="/proyectos" class="absolute top-6 left-6 md:top-10 md:left-10 flex items-center gap-2 text-white/80 hover:text-white text-xs tracking-[0.2em] uppercase transition-colors duration-300 group">
+    <a href="/projects-page" class="absolute top-6 left-6 md:top-10 md:left-10 flex items-center gap-2 text-white/80 hover:text-white text-xs tracking-[0.2em] uppercase transition-colors duration-300 group">
       <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform duration-300 group-hover:-translate-x-1">
         <path d="M19 12H5M5 12l7 7M5 12l7-7"/>
       </svg>
@@ -62,18 +64,18 @@ import canopia3 from '@/assets/img/proyectos/casa-canopia/canopia-3.jpg';
       <!-- Fila 1: dos columnas iguales -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
         <div class="overflow-hidden">
-          <img src={canopia2.src} alt="Casa Canopia — Vista 2" data-lightbox
+          <Image src={guadua2} widths={[640, 1024, 1600, 2400]} sizes="(min-width: 640px) 50vw, 100vw" alt="Casa Guadua — Vista 2" data-lightbox
             class="w-full h-[50vw] sm:h-[50vh] md:h-[55vh] object-cover hover:scale-[1.02] transition-transform duration-700 cursor-zoom-in" />
         </div>
         <div class="overflow-hidden">
-          <img src={canopia3.src} alt="Casa Canopia — Vista 3" data-lightbox
+          <Image src={guadua3} widths={[640, 1024, 1600, 2400]} sizes="(min-width: 640px) 50vw, 100vw" alt="Casa Guadua — Vista 3" data-lightbox
             class="w-full h-[50vw] sm:h-[50vh] md:h-[55vh] object-cover hover:scale-[1.02] transition-transform duration-700 cursor-zoom-in" />
         </div>
       </div>
 
       <!-- Fila 2: full-width -->
       <div class="overflow-hidden">
-        <img src={canopia1.src} alt="Casa Canopia — Vista panorámica" data-lightbox
+        <Image src={guadua1} widths={[640, 1024, 1600, 2400]} sizes="100vw" alt="Casa Guadua — Vista panorámica" data-lightbox
           class="w-full h-[45vw] md:h-[55vh] object-cover object-bottom hover:scale-[1.02] transition-transform duration-700 cursor-zoom-in"
           style="min-height: 200px;" />
       </div>
@@ -92,57 +94,6 @@ import canopia3 from '@/assets/img/proyectos/casa-canopia/canopia-3.jpg';
     </div>
   </section>
 
-  <!-- LIGHTBOX MODAL -->
-  <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Vista ampliada">
-    <button id="lightbox-close" class="absolute top-5 right-6 text-white/60 hover:text-white transition-colors duration-200 text-4xl leading-none z-10" aria-label="Cerrar">&times;</button>
-    <button id="lightbox-prev" class="absolute left-4 md:left-8 text-white/60 hover:text-white transition-colors duration-200 z-10 p-2" aria-label="Anterior">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
-    </button>
-    <img id="lightbox-img" src="" alt="" class="max-w-[85vw] max-h-[85vh] object-contain select-none" />
-    <button id="lightbox-next" class="absolute right-4 md:right-8 text-white/60 hover:text-white transition-colors duration-200 z-10 p-2" aria-label="Siguiente">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
-    </button>
-    <p id="lightbox-counter" class="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest"></p>
-  </div>
+  <Lightbox />
 
 </Layout>
-
-<script>
-  const images = [...document.querySelectorAll<HTMLImageElement>('img[data-lightbox]')];
-  const lightbox  = document.getElementById('lightbox')!;
-  const lbImg     = document.getElementById('lightbox-img') as HTMLImageElement;
-  const lbClose   = document.getElementById('lightbox-close')!;
-  const lbPrev    = document.getElementById('lightbox-prev')!;
-  const lbNext    = document.getElementById('lightbox-next')!;
-  const lbCounter = document.getElementById('lightbox-counter')!;
-  let current = 0;
-
-  function open(index: number) {
-    current = index;
-    lbImg.src = images[current].src;
-    lbImg.alt = images[current].alt;
-    lbCounter.textContent = `${current + 1} / ${images.length}`;
-    lightbox.classList.remove('hidden');
-    lightbox.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-  }
-  function close() {
-    lightbox.classList.add('hidden');
-    lightbox.classList.remove('flex');
-    document.body.style.overflow = '';
-  }
-  function prev() { open((current - 1 + images.length) % images.length); }
-  function next() { open((current + 1) % images.length); }
-
-  images.forEach((img, i) => img.addEventListener('click', () => open(i)));
-  lbClose.addEventListener('click', close);
-  lbPrev.addEventListener('click', prev);
-  lbNext.addEventListener('click', next);
-  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('flex')) return;
-    if (e.key === 'ArrowLeft')  prev();
-    if (e.key === 'ArrowRight') next();
-    if (e.key === 'Escape')     close();
-  });
-</script>

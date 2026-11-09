@@ -1,0 +1,120 @@
+---
+// Lightbox compartido por las páginas de proyectos.
+// Abre cualquier <img data-lightbox> de la página.
+---
+
+<div
+  id="lightbox"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Vista ampliada"
+>
+  <button
+    id="lightbox-close"
+    type="button"
+    class="absolute top-5 right-6 text-white/60 hover:text-white transition-colors duration-200 text-4xl leading-none z-10"
+    aria-label="Cerrar"
+  >
+    &times;
+  </button>
+
+  <button
+    id="lightbox-prev"
+    type="button"
+    class="absolute left-4 md:left-8 text-white/60 hover:text-white transition-colors duration-200 z-10 p-2"
+    aria-label="Anterior"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+
+  <img
+    id="lightbox-img"
+    src=""
+    alt=""
+    class="max-w-[85vw] max-h-[85vh] object-contain select-none"
+  />
+
+  <button
+    id="lightbox-next"
+    type="button"
+    class="absolute right-4 md:right-8 text-white/60 hover:text-white transition-colors duration-200 z-10 p-2"
+    aria-label="Siguiente"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+         fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 18l6-6-6-6"/>
+    </svg>
+  </button>
+
+  <p id="lightbox-counter" class="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest"></p>
+</div>
+
+<script>
+  const images = [...document.querySelectorAll<HTMLImageElement>('img[data-lightbox]')];
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+  const lbClose = document.getElementById('lightbox-close');
+  const lbPrev = document.getElementById('lightbox-prev');
+  const lbNext = document.getElementById('lightbox-next');
+  const lbCounter = document.getElementById('lightbox-counter');
+
+  if (lightbox && lbImg && images.length) {
+    let current = 0;
+    let lastFocused: HTMLElement | null = null;
+
+    const isOpen = () => lightbox.classList.contains('flex');
+
+    function open(index: number) {
+      if (!isOpen()) lastFocused = document.activeElement as HTMLElement | null;
+      current = index;
+      const img = images[current];
+      // currentSrc = la versión que el navegador eligió del srcset (la más grande disponible para la pantalla)
+      lbImg!.src = img.currentSrc || img.src;
+      lbImg!.alt = img.alt;
+      if (lbCounter) lbCounter.textContent = `${current + 1} / ${images.length}`;
+      lightbox!.classList.remove('hidden');
+      lightbox!.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      lbClose?.focus();
+    }
+
+    function close() {
+      lightbox!.classList.add('hidden');
+      lightbox!.classList.remove('flex');
+      document.body.style.overflow = '';
+      lastFocused?.focus();
+    }
+
+    const prev = () => open((current - 1 + images.length) % images.length);
+    const next = () => open((current + 1) % images.length);
+
+    images.forEach((img, i) => {
+      img.tabIndex = 0;
+      img.addEventListener('click', () => open(i));
+      img.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          open(i);
+        }
+      });
+    });
+
+    lbClose?.addEventListener('click', close);
+    lbPrev?.addEventListener('click', prev);
+    lbNext?.addEventListener('click', next);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!isOpen()) return;
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'Escape') close();
+    });
+  }
+</script>

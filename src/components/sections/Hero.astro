@@ -1,12 +1,18 @@
 ---
 // Hero.astro
+import { Image } from "astro:assets";
+import heroImage from "@/assets/img/project-modern-house.png";
 ---
 
 <section id="inicio" class="relative min-h-screen flex items-start pt-32 md:pt-0 md:items-center">
   <!-- Background Image -->
   <div class="absolute inset-0">
-<img
-  src="/project-modern-house.png"
+<Image
+  src={heroImage}
+  widths={[768, 1280, 1536]}
+  sizes="100vw"
+  loading="eager"
+  fetchpriority="high"
   alt="Arquitectura moderna LARQ"
   class="w-full h-full object-cover brightness-100"
 />

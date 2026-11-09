@@ -1,32 +1,33 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '@/layouts/MainLayout.astro';
+import Lightbox from '@/components/Lightbox.astro';
 
 import casaFq1 from '@/assets/img/proyectos/casa-fq/casa-fq-1.png';
-import casaFq2 from 'public/casa-fq-2.png';
+import casaFq2 from '@/assets/img/proyectos/casa-fq/casa-fq-2.png';
 import casaFq3 from '@/assets/img/proyectos/casa-fq/casa-fq-3.png';
 import casaFq4 from '@/assets/img/proyectos/casa-fq/casa-fq-4.png';
 import casaFq5 from '@/assets/img/proyectos/casa-fq/casa-fq-5.png';
-import casaFq6 from '@/assets/img/proyectos/casa-fq/casa-fq-6.png';
 ---
 
 <Layout
   title="Casa FQ — Residencia Contemporánea en Guanacaste | LARQ Arquitectura"
   description="Casa FQ es una vivienda unifamiliar contemporánea en Guanacaste definida por la superposición de volúmenes y contraste de materiales: concreto, madera y elementos verticales. Construida en 2024."
-  image="https://larqcr.com/_astro/casa-fq-2.Du9GCMOO.png"
+  image={casaFq2}
   type="article"
 >
 
   <!-- HERO -->
   <section class="relative w-full h-screen overflow-hidden">
-    <img
-      src={casaFq2.src}
+    <Image
+      src={casaFq2} widths={[768, 1280, 1920, 2560]} sizes="100vw" loading="eager" fetchpriority="high"
       alt="Casa FQ"
       class="w-full h-full object-cover"
     />
     <div class="absolute inset-0 bg-[#3D3635]/30"></div>
 
     <a
-      href="/proyectos"
+      href="/projects-page"
       class="absolute top-6 left-6 md:top-10 md:left-10 flex items-center gap-2
              text-white/80 hover:text-white text-xs tracking-[0.2em] uppercase
              transition-colors duration-300 group"
@@ -115,16 +116,16 @@ import casaFq6 from '@/assets/img/proyectos/casa-fq/casa-fq-6.png';
       <!-- Fila 1: dos columnas iguales -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
         <div class="overflow-hidden">
-          <img
-            src={casaFq1.src}
+          <Image
+            src={casaFq1} widths={[640, 1024, 1600, 2400]} sizes="(min-width: 640px) 50vw, 100vw"
             alt="Casa FQ — Vista 1"
             data-lightbox
             class="w-full h-[50vw] sm:h-[50vh] md:h-[55vh] object-cover hover:scale-[1.02] transition-transform duration-700 cursor-zoom-in"
           />
         </div>
         <div class="overflow-hidden">
-          <img
-            src={casaFq2.src}
+          <Image
+            src={casaFq2} widths={[640, 1024, 1600, 2400]} sizes="(min-width: 640px) 50vw, 100vw"
             alt="Casa FQ — Vista 2"
             data-lightbox
             class="w-full h-[50vw] sm:h-[50vh] md:h-[55vh] object-cover hover:scale-[1.02] transition-transform duration-700 cursor-zoom-in"
@@ -134,8 +135,8 @@ import casaFq6 from '@/assets/img/proyectos/casa-fq/casa-fq-6.png';
 
       <!-- Fila 2: full-width -->
       <div class="overflow-hidden">
-        <img
-          src={casaFq3.src}
+        <Image
+          src={casaFq3} widths={[640, 1024, 1600, 2400]} sizes="100vw"
           alt="Casa FQ — Vista panorámica"
           data-lightbox
           class="w-full h-[45vw] md:h-[55vh] object-cover object-bottom hover:scale-[1.02] transition-transform duration-700 cursor-zoom-in"
@@ -146,16 +147,16 @@ import casaFq6 from '@/assets/img/proyectos/casa-fq/casa-fq-6.png';
       <!-- Fila 3: dos columnas iguales -->
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3">
         <div class="overflow-hidden">
-          <img
-            src={casaFq4.src}
+          <Image
+            src={casaFq4} widths={[640, 1024, 1600, 2400]} sizes="(min-width: 640px) 50vw, 100vw"
             alt="Casa FQ — Vista 4"
             data-lightbox
             class="w-full h-[50vw] sm:h-[50vh] md:h-[55vh] object-cover hover:scale-[1.02] transition-transform duration-700 cursor-zoom-in"
           />
         </div>
         <div class="overflow-hidden">
-          <img
-            src={casaFq5.src}
+          <Image
+            src={casaFq5} widths={[640, 1024, 1600, 2400]} sizes="(min-width: 640px) 50vw, 100vw"
             alt="Casa FQ — Vista 5"
             data-lightbox
             class="w-full h-[50vw] sm:h-[50vh] md:h-[55vh] object-cover hover:scale-[1.02] transition-transform duration-700 cursor-zoom-in"
@@ -191,100 +192,6 @@ import casaFq6 from '@/assets/img/proyectos/casa-fq/casa-fq-6.png';
     </div>
   </section>
 
-
-  <!-- LIGHTBOX MODAL -->
-  <div
-    id="lightbox"
-    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Vista ampliada"
-  >
-    <button
-      id="lightbox-close"
-      class="absolute top-5 right-6 text-white/60 hover:text-white transition-colors duration-200 text-4xl leading-none z-10"
-      aria-label="Cerrar"
-    >
-      &times;
-    </button>
-
-    <button
-      id="lightbox-prev"
-      class="absolute left-4 md:left-8 text-white/60 hover:text-white transition-colors duration-200 z-10 p-2"
-      aria-label="Anterior"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M15 18l-6-6 6-6"/>
-      </svg>
-    </button>
-
-    <img
-      id="lightbox-img"
-      src=""
-      alt=""
-      class="max-w-[85vw] max-h-[85vh] object-contain select-none"
-    />
-
-    <button
-      id="lightbox-next"
-      class="absolute right-4 md:right-8 text-white/60 hover:text-white transition-colors duration-200 z-10 p-2"
-      aria-label="Siguiente"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M9 18l6-6-6-6"/>
-      </svg>
-    </button>
-
-    <p id="lightbox-counter" class="absolute bottom-5 left-1/2 -translate-x-1/2 text-white/40 text-xs tracking-widest"></p>
-  </div>
+  <Lightbox />
 
 </Layout>
-
-
-<script>
-  const images = [...document.querySelectorAll<HTMLImageElement>('img[data-lightbox]')];
-  const lightbox  = document.getElementById('lightbox')!;
-  const lbImg     = document.getElementById('lightbox-img') as HTMLImageElement;
-  const lbClose   = document.getElementById('lightbox-close')!;
-  const lbPrev    = document.getElementById('lightbox-prev')!;
-  const lbNext    = document.getElementById('lightbox-next')!;
-  const lbCounter = document.getElementById('lightbox-counter')!;
-
-  let current = 0;
-
-  function open(index: number) {
-    current = index;
-    lbImg.src = images[current].src;
-    lbImg.alt = images[current].alt;
-    lbCounter.textContent = `${current + 1} / ${images.length}`;
-    lightbox.classList.remove('hidden');
-    lightbox.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function close() {
-    lightbox.classList.add('hidden');
-    lightbox.classList.remove('flex');
-    document.body.style.overflow = '';
-  }
-
-  function prev() { open((current - 1 + images.length) % images.length); }
-  function next() { open((current + 1) % images.length); }
-
-  images.forEach((img, i) => img.addEventListener('click', () => open(i)));
-
-  lbClose.addEventListener('click', close);
-  lbPrev.addEventListener('click', prev);
-  lbNext.addEventListener('click', next);
-
-  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
-
-  document.addEventListener('keydown', (e) => {
-    if (!lightbox.classList.contains('flex')) return;
-    if (e.key === 'ArrowLeft')  prev();
-    if (e.key === 'ArrowRight') next();
-    if (e.key === 'Escape')     close();
-  });
-</script>
