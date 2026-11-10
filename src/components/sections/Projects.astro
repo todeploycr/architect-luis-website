@@ -1,7 +1,7 @@
 ---
 // src/components/sections/Projects.astro
 import { Image } from "astro:assets";
-import modernHouse from '@/assets/img/project-modern-house.png';
+import modernHouse from '@/assets/img/project-modern-house.jpg';
 import whiteHouse from '@/assets/img/project-white-house.png';
 import cabinInterior from '@/assets/img/casas-del-bosque.png';
 import tropicalCabin from '@/assets/img/casa-guadua.png';
@@ -105,6 +105,7 @@ const projects = [
           <!-- Image -->
           <Image
             src={project.image}
+            quality={90}
             widths={[480, 800, 1200]}
             sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
             alt={project.title}

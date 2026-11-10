@@ -1,7 +1,7 @@
 ---
 // Hero.astro
 import { Image } from "astro:assets";
-import heroImage from "@/assets/img/project-modern-house.png";
+import heroImage from "@/assets/img/project-modern-house.jpg";
 ---
 
 <section id="inicio" class="relative min-h-screen flex items-start pt-32 md:pt-0 md:items-center">
@@ -9,7 +9,8 @@ import heroImage from "@/assets/img/project-modern-house.png";
   <div class="absolute inset-0">
 <Image
   src={heroImage}
-  widths={[768, 1280, 1536]}
+  quality={90}
+  widths={[768, 1280, 1920, 2560, 3072]}
   sizes="100vw"
   loading="eager"
   fetchpriority="high"

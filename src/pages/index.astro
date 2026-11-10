@@ -3,7 +3,7 @@ import ogImage from "@/assets/img/proyectos/casa-canopia/canopia-5.png";
 import MainLayout from "@/layouts/MainLayout.astro";
 import Hero from "@/components/sections/Hero.astro";
 import { Image } from "astro:assets";
-import modernHouse from '@/assets/img/project-modern-house.png';
+import modernHouse from '@/assets/img/project-modern-house.jpg';
 import whiteHouse from '@/assets/img/project-white-house.png';
 import tropicalCabin from '@/assets/img/casa-guadua.png';
 
@@ -128,6 +128,7 @@ const featuredProjects = [
             <div class="relative overflow-hidden rounded-sm mb-4 h-75">
               <Image
                 src={project.image}
+                quality={90}
                 alt={project.alt}
                 widths={[480, 800, 1200]}
                 sizes="(min-width: 768px) 33vw, 100vw"
